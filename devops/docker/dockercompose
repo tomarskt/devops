@@ -1,0 +1,227 @@
+    1  sudo su -
+    2  sudo su -
+    3  docker info
+    4  ls -ld /var/run/docker.sock
+    5  exit
+    6  docker info
+    7  clear
+    8  docker run hello-world
+    9  clear
+   10  docker pull centos
+   11  docker run centos:latest whoami
+   12  docker run centos:latest hostname
+   13  docker run centos:latest pwd
+   14  docker ps
+   15  docker ps -a
+   16  clear
+   17  docker ps
+   18  docker ps -a
+   19  clear
+   20  sudo su 0-
+   21  clear
+   22  docker ps
+   23  docker stats vigilant_curran
+   24  clear
+   25  docker ps
+   26  docker run -i -t centos:latest /bin/bash
+   27  docker ps -a
+   28  clear
+   29  docker ps
+   30  clear
+   31  docker ps
+   32  docker stop d9a3b1764b5a
+   33  docker run -it --name centosv1 centos:latest /bin/bash
+   34  docker ps
+   35  clear
+   36  docker ps -a
+   37  docker rm vigilant_curran
+   38  docker ps -a
+   39  cler
+   40  clear
+   41  docker run -it --name centosv2 centos:latest /bin/bash
+   42  docker attach centosv2
+   43  docker ps
+   44  docker exec -it centosv3 /bin/bash
+   45  docker ps
+   46  docker run -it --name centosv3 centos:latest /bin/bash
+   47  docker ps -a
+   48  docker run -it --name centosv3 centos:latest /bin/bash
+   49  clear
+   50  clear
+   51  docker ps
+   52  docker pause centosv4
+   53  docker unpause centosv4
+   54  docker run -it --name centosv4 centos:latest /bin/bash
+   55  docker ps -a
+   56  docker ps
+   57  docker start -i centosv4
+   58  docker restart centosv4
+   59  clear
+   60  docker ps -a
+   61  clear
+   62  docker run -d --name webserverv1 nginx
+   63  docker ps
+   64  docker kill webserverv1
+   65  docker ps
+   66  clear
+   67  docker images
+   68  docker rmi hello-world
+   69  docker ps -a | grep hello-world
+   70  docker rm c656d77f40eb
+   71  docker rmi hello-world
+   72  docker images
+   73  sudo su -
+   74  clear
+   75  docker run -it --name centosb1 centos:latest
+   76  clear
+   77  docker diff centosb1
+   78  clear
+   79  docker commit centosb1 centos-net
+   80  docker images
+   81  docker rm centosb1
+   82  docker run -it --name centosb2 centos-net
+   83  docker inspect centos-net
+   84  clear
+   85  mkdir app
+   86  cd app/
+   87  vi Dockerfile
+   88  touch index.html
+   89  ls -ltr
+   90  touch index.php
+   91  ls -ltr
+   92  vi Dockerfile
+   93  docker build -t centos-test:latest .
+   94  docker run -it centos-test:latest bash
+   95  clear
+   96  cat Dockerfile
+   97  cd ..
+   98  mkdir nginx
+   99  cd nginx/
+  100  clear
+  101  vi index.html
+  102  vi Dockerfile
+  103  docker build -t webserver:v1 .
+  104  docker images
+  105  clear
+  106  docker run -d -p 80:80 webserver:v1
+  107  docker ps
+  108  curl localhost
+  109  cd ..
+  110  ls -ltr
+  111  git init
+  112  git status
+  113  clear
+  114  docker run -d -p 5000:5000 --restart=always --name registry registry:2
+  115  docker ps
+  116  clear
+  117  docker pull ubuntu:16.04
+  118  clear
+  119  docker images
+  120  docker tag ubuntu:16.04 localhost:5000/ubuntu-nonprod
+  121  docker images
+  122  docker push localhost:5000/ubuntu-nonprod
+  123  clear
+  124  docker images
+  125  docker rmi ubuntu:16.04
+  126  docker rmi localhost:5000/ubuntu-nonprod
+  127  docker images
+  128  clear
+  129  docker pull localhost:5000/ubuntu-nonprod
+  130  docker images
+  131  clear
+  132  docker container stop registry
+  133  docker container rm -v registry
+  134  clear
+  135  docker login --username=ankit630
+  136  clear
+  137  docker images
+  138  docker tag webserver:v1 ankit630/webserver-automation:webserverv1-image
+  139  docker images
+  140  docker push ankit630/webserver-automation:webserverv1-image
+  141  c lear
+  142  clear
+  143  history
+  144  clear
+  145  docker network ls
+  146  docker network inspect bridge
+  147  clear
+  148  docker network create user_bridge
+  149  docker network ls
+  150  docker run -d --network user_bridge --name nginx-userdefinednetworking nginx
+  151  docker ps
+  152  docker inspect e14ce41a0a1a
+  153  docker network ls
+  154  docker network disconnect user_bridge nginx-userdefinednetworking
+  155  docker inspect e14ce41a0a1a
+  156  docker network ls
+  157  docker network connect bridge nginx-userdefinednetworking
+  158  docker inspect e14ce41a0a1a
+  159  docker network ls
+  160  docker network rm 628558ef64ae
+  161  docker network ls
+  162  clear
+  163  curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  164  sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  165  ls -ld /usr/local/bin/docker-compose
+  166  chmod +x /usr/local/bin/docker-compose
+  167  sudo chmod +x /usr/local/bin/docker-compose
+  168  ls -ld /usr/local/bin/docker-compose
+  169  ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+  170  sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+  171  docker-compose --version
+  172  clear
+  173  docker-compose --version
+  174  clear
+  175  mkdir app
+  176  mkdir app1
+  177  cd app1/
+  178  clear
+  179  vi docker-compose.yml
+  180  mkdir sshd
+  181  vi Dockerfile
+  182  docker-compose up -d
+  183  cd ..
+  184  cd app1/
+  185  ls -ltr
+  186  mv Dockerfile sshd
+  187  ls -ltr
+  188  cd sshd/
+  189  ls -ltr
+  190  cd ..
+  191  ls -ltr
+  192  docker-compose up -d
+  193  vi sshd/Dockerfile
+  194  docker-compose up -d
+  195  docker ps
+  196  ssh -p 2222 student@localhost
+  197  clear
+  198  docker ps
+  199  docker-compose down
+  200  docker ps
+  201  vi docker-compose.yml
+  202  mkdir nginx
+  203  cd nginx/
+  204  touch Dockerfile
+  205  vi docker-compose.yml
+  206  cd ..
+  207  vi docker-compose.yml
+  208  ls -ltr
+  209  cd nginx/
+  210  ls -ltr
+  211  cleasr
+  212  clear
+  213  history
+
+  ---
+version: "2"
+services:
+  sshd:
+    build: sshd
+    image: centos-sshd:latest
+    ports:
+      - "2222:22"
+  nginx:
+    build: nginx
+    image: centos-nginx:latest
+    ports:
+      - "81:80"
