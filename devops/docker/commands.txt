@@ -1,0 +1,461 @@
+sudo su -
+    2  sudo su -
+    3  docker info
+    4  ls -ld /var/run/docker.sock
+    5  exit
+    6  docker info
+    7  clear
+    8  docker run hello-world
+    9  clear
+   10  docker pull centos
+   11  docker run centos:latest whoami
+   12  docker run centos:latest hostname
+   13  docker run centos:latest pwd
+   14  docker ps
+   15  docker ps -a
+   16  clear
+   17  docker ps
+   18  docker ps -a
+   19  clear
+   20  sudo su 0-
+   21  clear
+   22  docker ps
+   23  docker stats vigilant_curran
+   24  clear
+   25  docker ps
+   26  docker run -i -t centos:latest /bin/bash
+   27  docker ps -a
+   28  clear
+   29  docker ps
+   30  clear
+   31  docker ps
+   32  docker stop d9a3b1764b5a
+   33  docker run -it --name centosv1 centos:latest /bin/bash
+   34  docker ps
+   35  clear
+   36  docker ps -a
+   37  docker rm vigilant_curran
+   38  docker ps -a
+   39  cler
+   40  clear
+   41  docker run -it --name centosv2 centos:latest /bin/bash
+   42  docker attach centosv2
+   43  docker ps
+   44  docker exec -it centosv3 /bin/bash
+   45  docker ps
+   46  docker run -it --name centosv3 centos:latest /bin/bash
+   47  docker ps -a
+   48  docker run -it --name centosv3 centos:latest /bin/bash
+   49  clear
+   50  clear
+   51  docker ps
+   52  docker pause centosv4
+   53  docker unpause centosv4
+   54  docker run -it --name centosv4 centos:latest /bin/bash
+   55  docker ps -a
+   56  docker ps
+   57  docker start -i centosv4
+   58  docker restart centosv4
+   59  clear
+   60  docker ps -a
+   61  clear
+   62  docker run -d --name webserverv1 nginx
+   63  docker ps
+   64  docker kill webserverv1
+   65  docker ps
+   66  clear
+   67  docker images
+   68  docker rmi hello-world
+   69  docker ps -a | grep hello-world
+   70  docker rm c656d77f40eb
+   71  docker rmi hello-world
+   72  docker images
+   73  sudo su -
+   74  clear
+   75  docker run -it --name centosb1 centos:latest
+   76  clear
+   77  docker diff centosb1
+   78  clear
+   79  docker commit centosb1 centos-net
+   80  docker images
+   81  docker rm centosb1
+   82  docker run -it --name centosb2 centos-net
+   83  docker inspect centos-net
+   84  clear
+   85  mkdir app
+   86  cd app/
+   87  vi Dockerfile
+   88  touch index.html
+   89  ls -ltr
+   90  touch index.php
+   91  ls -ltr
+   92  vi Dockerfile
+   93  docker build -t centos-test:latest .
+   94  docker run -it centos-test:latest bash
+   95  clear
+   96  cat Dockerfile
+   97  cd ..
+   98  mkdir nginx
+   99  cd nginx/
+  100  clear
+  101  vi index.html
+  102  vi Dockerfile
+  103  docker build -t webserver:v1 .
+  104  docker images
+  105  clear
+  106  docker run -d -p 80:80 webserver:v1
+  107  docker ps
+  108  curl localhost
+  109  cd ..
+  110  ls -ltr
+  111  git init
+  112  git status
+  113  clear
+  114  docker run -d -p 5000:5000 --restart=always --name registry registry:2
+  115  docker ps
+  116  clear
+  117  docker pull ubuntu:16.04
+  118  clear
+  119  docker images
+  120  docker tag ubuntu:16.04 localhost:5000/ubuntu-nonprod
+  121  docker images
+  122  docker push localhost:5000/ubuntu-nonprod
+  123  clear
+  124  docker images
+  125  docker rmi ubuntu:16.04
+  126  docker rmi localhost:5000/ubuntu-nonprod
+  127  docker images
+  128  clear
+  129  docker pull localhost:5000/ubuntu-nonprod
+  130  docker images
+  131  clear
+  132  docker container stop registry
+  133  docker container rm -v registry
+  134  clear
+  135  docker login --username=ankit630
+  136  clear
+  137  docker images
+  138  docker tag webserver:v1 ankit630/webserver-automation:webserverv1-image
+  139  docker images
+  140  docker push ankit630/webserver-automation:webserverv1-image
+
+   useradd vagrant
+    2  passwd vagrant
+    3  vi /etc/sudoers
+    4  clear
+    5  hostnamectl set-hostname git.unixcloudfusion.in
+    6  clear
+    7  ifconfig
+    8  clear
+    9  vi /etc/hosts
+   10  ping git.unixcloudfusion.in
+   11  clear
+   12  yum install git -y
+   13  git --version
+   14  clear
+   15  git config --global user.name "Ankit Mittal"
+   16  git config --global user.email "ankit@unixcloudfusion.in"
+   17  clear
+   18  mkdir infra-automation
+   19  cd infra-automation/
+   20  ls -lotr
+   21  git init
+   22  ls -ltra
+   23  cd .git/
+   24  ls -ltr
+   25  cd ..
+   26  clear
+   27  vi README
+   28  git status
+   29  git add README
+   30  git status
+   31  git commit -m "Added the README file for project"
+   32  git status
+   33  clear
+   34  git blame README
+   35  clear
+   36  history
+   37  clear
+   38  vi README
+   39  git status
+   40  git diff
+   41  clear
+   42  git diff README
+   43  clear
+   44  touch file1
+   45  git status
+   46  git add .
+   47  git status
+   48  clear
+   49  git status
+   50  git commit -a -m "Edited the readme file and create file1"
+   51  git status
+   52  history | grep hostname
+   53  clear
+   54  history
+
+
+
+
+
+
+stomar  9:33 PM
+1  useradd vagrant
+    2  passwd vagrant
+    3  vi /etc/sudoers
+    4  clear
+    5  hostnamectl set-hostname git.unixcloudfusion.in
+    6  clear
+    7  ifconfig
+    8  clear
+    9  vi /etc/hosts
+   10  ping git.unixcloudfusion.in
+   11  clear
+   12  yum install git -y
+   13  git --version
+   14  clear
+   15  git config --global user.name "Ankit Mittal"
+   16  git config --global user.email "ankit@unixcloudfusion.in"
+   17  clear
+   18  mkdir infra-automation
+   19  cd infra-automation/
+   20  ls -lotr
+   21  git init
+   22  ls -ltra
+   23  cd .git/
+   24  ls -ltr
+   25  cd ..
+   26  clear
+   27  vi README
+   28  git status
+   29  git add README
+   30  git status
+   31  git commit -m "Added the README file for project"
+   32  git status
+   33  clear
+   34  git blame README
+   35  clear
+   36  history
+   37  clear
+   38  vi README 
+   39  git status
+   40  git diff
+   41  clear
+   42  git diff README 
+   43  clear
+   44  touch file1
+   45  git status
+   46  git add .
+   47  git status
+   48  clear
+   49  git status
+   50  git commit -a -m "Edited the readme file and create file1"
+   51  git status
+   52  history | grep hostname
+   53  clear
+   54  history
+   55  su - vagrant
+   56  bash
+   57  su - vagrant
+   58  clear
+   59  cd infra-automation/
+   60  ls -ltr
+   61  clear
+   62  ls -ltr
+   63  clear
+   64  ls -lot
+   65  touch feature1
+   66  git status
+   67  git add feature1 
+   68  git status
+   69  clear
+   70  rm -f feature1 
+   71  git status
+   72  git rm feature1
+   73  git status
+   74  ls -ltr
+   75  clear
+   76  touch feature1
+   77  ls -ltr
+   78  git add feature1 
+   79  git status
+   80  git rm --cached feature1
+   81  ls -ltr
+   82  git status
+   83  clear
+   84  git add feature1
+   85  git status
+   86  git rm -f feature1
+   87  git status
+   88  clear
+   89  touch movie.mp4
+   90  touch file.jpeg
+   91  touch file.pyc
+   92  touch file.mpeg4
+   93  git status
+   94  vi .gitignore
+   95  git status
+   96  clear
+   97  git status
+   98  git add .gitignore 
+   99  git commit -m "Added gitignore to ignore binary files"
+  100  git status
+  101  clear
+  102  git log
+  103  git log --oneline
+  104  clear
+  105  git log --oneline --decorate --graph
+  106  clear
+  107  git log
+  108  clear
+  109  git tag --a releasev1 --m "Released the version1 of our application"
+  110  git tag
+  111  git show releasev1
+  112  clear
+  113  git log
+  114  git tag --a releasev0 51b61b265e1cf2202b4cb102cdf5e059aae41931 --m "Initial release of the applicartion"
+  115  git tag
+  116  git show releasev0
+  117  clear
+  118  git tag
+  119  clear
+  120  git remote add origin git@bitbucket.org:ankit6300/infra-automation.git
+  121  git remote -v
+  122  clear
+  123  ssh-keygen -t rsa
+  124  ls -ltr /root/.ssh/
+  125  cat id_rsa.pub
+  126  cat /root/.ssh/id_rsa.pub 
+  127  cat /root/.ssh/id_rsa
+  128  clear
+  129  git push origin master
+  130  git push --follow-tags
+  131  ls -ltr
+  132  clear
+  133  ls -ltr
+  134  git pull origin master
+  135  cat file2
+  136  clear
+  137  git branch
+  138  git fetch && git checkout feature/JIRA-123
+  139  git branch
+  140  touch feature123.txt
+  141  touch feature123-v1.tt
+  142  mv feature123-v1.tt feature123-v1.txt
+  143  touch feature123-v2.txt
+  144  git status
+  145  git add .
+  146  git commit -m 
+  147  git commit -m "JIRA-123 added feature123"
+  148  git branch
+  149  git push origin feature/JIRA-123
+  150  clear
+  151  git branch
+  152  git branch feature2
+  153  git branch feature/jira-124
+  154  git branch
+  155  git checkout feature/jira-124
+  156  git branch
+  157  clear
+  158  git checkout -b feature/jira-125
+  159  git branch
+  160  touch file125
+  161  git status
+  162  git add file125
+  163  git commit -m "JIRA-125 added feature125"
+  164  git status
+  165  git checkout feature/jira-124
+  166  git merge feature/jira-125
+  167  ls -ltr
+  168  clear
+  169  git branch
+  170  git branch -d feature/jira-125
+  171  git branch
+  172  git checkout master
+  173  git branch -D feature/jira-124
+  174  git branch
+  175  clear
+  176  git fetch && git checkout dev2
+  177  git fetch && git checkout dev1
+  178  git checkout dev2
+  179  clear
+  180  vi code
+  181  git diff
+  182  git add code
+  183  git commit -m "replaced the code file"
+  184  git push origin dev2
+  185  git checkout dev1
+  186  clear
+  187  vi code
+  188  git diff
+  189  git add code
+  190  git commit -m "modified the code file"
+  191  git push origin dev1
+  192  clear
+  193  git pull origin master
+  194  vi code
+  195  git diff
+  196  git status
+  197  git add code
+  198  git commit -m "resolved conflict by overriding value to wxyz"
+  199  git push origin dev1
+  200  clear
+  201  git branch
+  202  touch xyz
+  203  touch abc
+  204  git status
+  205  git add .
+  206  git status
+  207  clear
+  208  git status
+  209  git stash save "working on file abc and xyz in branch dev1"
+  210  git status
+  211  git branch
+  212  git checkout master
+  213  git pull origin master
+  214  git branch
+  215  git stash list
+  216  git checkout dev1
+  217  git stash apply stash@{0}
+  218  git stash pop
+  219  git status
+  220  git stash list
+  221  git stash save "abc and xyz pending"
+  222  git stash list
+  223  git stash drop stash@{0}
+  224  git stash list
+  225  clear
+  226  git branch
+  227  git log
+  228  clear
+  229  touch file1234
+  230  vi file1234
+  231  git add file1234
+  232  git commit -m "added the file1234"
+  233  git log
+  234  clear
+  235  git revert 96a65655f18636f5c8d5a864c4ec6f3a02927ff3
+  236  git log
+  237  clear
+  238  ls -ltr
+  239  touch file12345
+  240  git add file12345
+  241  git commit -m "added file file12345"
+  242  git log
+  243  clear
+  244  git reset --hard b9dca2d17b9fc4f694624df997ae406f32c1b7c6
+  245  ls -ltr
+  246  git log
+  247  git reset --hard bf081d76297d1f409189db46440cdeea164c2e39
+  248  git log
+  249  ls -ltr
+  250  git branch
+  251  history
+  252  git branch
+  253  git checkout master
+  254  git pull originn master
+  255  git pull origin master
+  256  history > history-complete-git.txt
+9:33
+9:34
+https://bitbucket.org/ankit6300/infra-automation/downloads/
