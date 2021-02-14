@@ -105,3 +105,1595 @@
 114 git add . 
 115 clear 
 116 history
+
+
+Sudhirs-MacBook-Pro-3:cognixia stomar-n$ cd devops/chef-repo/cookbooks/
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ chef generate cookbook apache
+Generating cookbook apache
+- Ensuring correct cookbook content
+
+Your cookbook is ready. Type `cd apache` to enter it.
+
+There are several commands you can run to get started locally developing and testing your cookbook.
+Type `delivery local --help` to see a full list of local testing commands.
+
+Why not start by writing an InSpec test? Tests for the default recipe are stored at:
+
+test/integration/default/default_test.rb
+
+If you'd prefer to dive right in, the default recipe can be found at:
+
+recipes/default.rb
+
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ cd apache/
+Sudhirs-MacBook-Pro-3:apache stomar-n$ ls -la
+total 64
+drwxr-xr-x  15 stomar-n  staff   480 Feb 13 19:00 .
+drwxr-xr-x@  6 stomar-n  staff   192 Feb 13 19:00 ..
+drwxr-xr-x   3 stomar-n  staff    96 Feb 13 19:00 .delivery
+-rw-r--r--   1 stomar-n  staff   211 Feb 13 19:00 .gitignore
+drwxr-xr-x   3 stomar-n  staff    96 Feb 13 19:00 .vscode
+-rw-r--r--   1 stomar-n  staff   150 Feb 13 19:00 CHANGELOG.md
+-rw-r--r--   1 stomar-n  staff    70 Feb 13 19:00 LICENSE
+-rw-r--r--   1 stomar-n  staff   503 Feb 13 19:00 Policyfile.rb
+-rw-r--r--   1 stomar-n  staff    54 Feb 13 19:00 README.md
+-rw-r--r--   1 stomar-n  staff  1252 Feb 13 19:00 chefignore
+-rw-r--r--   1 stomar-n  staff   744 Feb 13 19:00 kitchen.yml
+-rw-r--r--   1 stomar-n  staff   676 Feb 13 19:00 metadata.rb
+drwxr-xr-x   3 stomar-n  staff    96 Feb 13 19:00 recipes
+drwxr-xr-x   4 stomar-n  staff   128 Feb 13 19:00 spec
+drwxr-xr-x   3 stomar-n  staff    96 Feb 13 19:00 test
+Sudhirs-MacBook-Pro-3:apache stomar-n$ cd ..
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ ls -la
+total 24
+drwxr-xr-x@  6 stomar-n  staff   192 Feb 13 19:00 .
+drwxr-xr-x@  9 stomar-n  staff   288 Feb 13 18:56 ..
+-rw-r--r--@  1 stomar-n  staff  6148 Feb 12 20:02 .DS_Store
+drwxr-xr-x  16 stomar-n  staff   512 Feb 13 19:11 apache
+-rw-r--r--@  1 stomar-n  staff   588 Feb 13 04:01 chefignore
+drwxr-xr-x@  7 stomar-n  staff   224 Feb 13 04:01 starter
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knfe cookbook upload apache
+sh: knfe: command not found
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife cookbook upload apache
+Uploading apache       [0.1.0]
+Uploaded 1 cookbook.
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife cookbook upload apache
+Uploading apache         [0.1.0]
+Uploaded 1 cookbook.
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife bootstrap 172.31.109.136 --sudo -U vagrant -N webserver01
+Connecting to 172.31.109.136 using ssh
+WARNING: Failed to authenticate vagrant to 172.31.109.136 - trying password auth
+Enter password for vagrant@172.31.109.136: 
+Connecting to 172.31.109.136 using ssh
+^CSudhirs-MacBook-Pro-3:cookbooks stomar-n$ 
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ 
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ 
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ 
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ 
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife bootstrat 192.168.33.11 --sudo -U vagrant -N webserver01FATAL: Cannot find subcommand for: 'bootstrat 192.168.33.11 --sudo -U vagrant -N webserver01'
+Available subcommands: (for details, knife SUB-COMMAND --help)
+
+** ACL COMMANDS **
+knife acl add MEMBER_TYPE MEMBER_NAME OBJECT_TYPE OBJECT_NAME PERMS
+knife acl bulk add MEMBER_TYPE MEMBER_NAME OBJECT_TYPE REGEX PERMS
+knife acl bulk remove MEMBER_TYPE MEMBER_NAME OBJECT_TYPE REGEX PERMS
+knife acl remove MEMBER_TYPE MEMBER_NAME OBJECT_TYPE OBJECT_NAME PERMS
+knife acl show OBJECT_TYPE OBJECT_NAME
+
+** BOOTSTRAP COMMANDS **
+knife bootstrap [PROTOCOL://][USER@]FQDN (options)
+
+** CLIENT COMMANDS **
+knife client bulk delete REGEX (options)
+knife client create CLIENTNAME (options)
+knife client delete [CLIENT [CLIENT]] (options)
+knife client edit CLIENT (options)
+knife client key create CLIENT (options)
+knife client key delete CLIENT KEYNAME (options)
+knife client key edit CLIENT KEYNAME (options)
+knife client key list CLIENT (options)
+knife client key show CLIENT KEYNAME (options)
+knife client list (options)
+knife client reregister CLIENT (options)
+knife client show CLIENT (options)
+
+** CONFIG COMMANDS **
+knife config list (options)
+knife config show [OPTION...] (options)
+Displays the value of Chef::Config[OPTION] (or all config values)
+knife config use [PROFILE]
+
+** CONFIGURE COMMANDS **
+knife configure (options)
+knife configure client DIRECTORY
+
+** COOKBOOK COMMANDS **
+knife cookbook bulk delete REGEX (options)
+knife cookbook delete COOKBOOK VERSION (options)
+knife cookbook download COOKBOOK [VERSION] (options)
+knife cookbook list (options)
+knife cookbook metadata COOKBOOK (options)
+knife cookbook metadata from file FILE (options)
+knife cookbook show COOKBOOK [VERSION] [PART] [FILENAME] (options)
+knife cookbook upload [COOKBOOKS...] (options)
+
+** DATA BAG COMMANDS **
+knife data bag create BAG [ITEM] (options)
+knife data bag delete BAG [ITEM] (options)
+knife data bag edit BAG ITEM (options)
+knife data bag from file BAG FILE|FOLDER [FILE|FOLDER..] (options)
+knife data bag list (options)
+knife data bag show BAG [ITEM] (options)
+
+** ENVIRONMENT COMMANDS **
+knife environment compare [ENVIRONMENT..] (options)
+knife environment create ENVIRONMENT (options)
+knife environment delete ENVIRONMENT (options)
+knife environment edit ENVIRONMENT (options)
+knife environment from file FILE [FILE..] (options)
+knife environment list (options)
+knife environment show ENVIRONMENT (options)
+
+** EXEC COMMANDS **
+knife exec [SCRIPT] (options)
+
+** GROUP COMMANDS **
+knife group add MEMBER_TYPE MEMBER_NAME GROUP_NAME
+knife group create GROUP_NAME
+knife group destroy GROUP_NAME
+knife group list
+knife group remove MEMBER_TYPE MEMBER_NAME GROUP_NAME
+knife group show GROUP_NAME
+
+** KNIFE COMMANDS **
+Usage: /usr/local/bin/knife (options)
+
+** NODE COMMANDS **
+knife node bulk delete REGEX (options)
+knife node create NODE (options)
+knife node delete [NODE [NODE]] (options)
+knife node edit NODE (options)
+knife node environment set NODE ENVIRONMENT
+knife node from file FILE (options)
+knife node list (options)
+knife node policy set NODE POLICY_GROUP POLICY_NAME (options)
+knife node run_list add [NODE] [ENTRY [ENTRY]] (options)
+knife node run_list remove [NODE] [ENTRY [ENTRY]] (options)
+knife node run_list set NODE ENTRIES (options)
+knife node show NODE (options)
+
+** PATH-BASED COMMANDS **
+knife delete [PATTERN1 ... PATTERNn]
+knife deps PATTERN1 [PATTERNn]
+knife diff PATTERNS
+knife download PATTERNS
+knife edit [PATTERN1 ... PATTERNn]
+knife list [-dfR1p] [PATTERN1 ... PATTERNn] (options)
+knife show [PATTERN1 ... PATTERNn] (options)
+knife upload PATTERNS (options)
+knife xargs [COMMAND] (options)
+
+** RAW COMMANDS **
+knife raw REQUEST_PATH (options)
+
+** RECIPE COMMANDS **
+knife recipe list [PATTERN]
+
+** REHASH COMMANDS **
+knife rehash
+
+** ROLE COMMANDS **
+knife role bulk delete REGEX (options)
+knife role create ROLE (options)
+knife role delete ROLE (options)
+knife role edit ROLE (options)
+knife role env_run_list add [ROLE] [ENVIRONMENT] [ENTRY [ENTRY]] (options)
+knife role env_run_list clear [ROLE] [ENVIRONMENT] (options)
+knife role env_run_list remove [ROLE] [ENVIRONMENT] [ENTRIES] (options)
+knife role env_run_list replace [ROLE] [ENVIRONMENT] [OLD_ENTRY] [NEW_ENTRY] (options)
+knife role env_run_list set [ROLE] [ENVIRONMENT] [ENTRIES] (options)
+knife role from file FILE [FILE..] (options)
+knife role list (options)
+knife role run_list add [ROLE] [ENTRY [ENTRY]] (options)
+knife role run_list clear [ROLE] (options)
+knife role run_list remove [ROLE] [ENTRY] (options)
+knife role run_list replace [ROLE] [OLD_ENTRY] [NEW_ENTRY] (options)
+knife role run_list set [ROLE] [ENTRIES] (options)
+knife role show ROLE (options)
+
+** SEARCH COMMANDS **
+knife search INDEX QUERY (options)
+
+** SERVE COMMANDS **
+knife serve (options)
+
+** SSH COMMANDS **
+knife ssh QUERY COMMAND (options)
+
+** SSL COMMANDS **
+knife ssl check [URL] (options)
+knife ssl fetch [URL] (options)
+
+** STATUS COMMANDS **
+knife status QUERY (options)
+
+** SUPERMARKET COMMANDS **
+knife supermarket download COOKBOOK [VERSION] (options)
+knife supermarket install COOKBOOK [VERSION] (options)
+knife supermarket list (options)
+knife supermarket search QUERY (options)
+knife supermarket share COOKBOOK [CATEGORY] (options)
+knife supermarket show COOKBOOK [VERSION] (options)
+knife supermarket unshare COOKBOOK
+
+** TAG COMMANDS **
+knife tag create NODE TAG ...
+knife tag delete NODE TAG ...
+knife tag list NODE
+
+** USER COMMANDS **
+knife user create USERNAME DISPLAY_NAME FIRST_NAME LAST_NAME EMAIL PASSWORD (options)
+knife user delete USER (options)
+knife user dissociate USERNAMES
+knife user edit USER (options)
+knife user invite add USERNAMES
+knife user invite list
+knife user invite rescind [USERNAMES] (options)
+knife user key create USER (options)
+knife user key delete USER KEYNAME (options)
+knife user key edit USER KEYNAME (options)
+knife user key list USER (options)
+knife user key show USER KEYNAME (options)
+knife user list (options)
+knife user reregister USER (options)
+knife user show USER (options)
+
+** VAULT COMMANDS **
+knife vault create VAULT ITEM VALUES (options)
+knife vault delete VAULT ITEM (options)
+knife vault download VAULT ITEM PATH (options)
+knife vault edit VAULT ITEM (options)
+knife vault isvault VAULT ITEM (options)
+knife vault itemtype VAULT ITEM (options)
+knife vault list (options)
+knife vault refresh VAULT ITEM
+knife vault remove VAULT ITEM VALUES (options)
+knife vault rotate all keys
+knife vault rotate keys VAULT ITEM (options)
+knife vault show VAULT [ITEM] [VALUES] (options)
+knife vault update VAULT ITEM VALUES (options)
+
+** YAML COMMANDS **
+knife yaml convert YAML_FILENAME [RUBY_FILENAME]
+
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife bootstrap 192.168.33.11 --sudo -U vagrant -N webserver01 
+Connecting to 192.168.33.11 using ssh
+WARNING: Failed to authenticate vagrant to 192.168.33.11 - trying password auth
+Enter password for vagrant@192.168.33.11: 
+Connecting to 192.168.33.11 using ssh
+The authenticity of host '192.168.33.11 ()' can't be established.
+fingerprint is SHA256:RPncNc9vINTBApbEdiEhu2pGWPiwIpy9X6DsPfVK0Zs.
+
+Are you sure you want to continue connecting
+? (Y/N) y
+Connecting to 192.168.33.11 using ssh
+WARN: [SSH] connection failed, terminating (#<Net::SSH::AuthenticationFailed: Authentication failed for user vagrant@192.168.33.11>)
+ERROR: Train::Transports::SSHFailed: SSH session could not be established
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife bootstrap 192.168.33.11 --sudo -U vagrant -N webserver01Connecting to 192.168.33.11 using ssh
+WARNING: Failed to authenticate vagrant to 192.168.33.11 - trying password auth
+Enter password for vagrant@192.168.33.11: 
+Connecting to 192.168.33.11 using ssh
+ERROR: Train::ClientError: Your SSH Agent has no keys added, and you have not specified a password or a key file
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife bootstrap 192.168.33.11 --sudo -U vagrant -N webserver01Connecting to 192.168.33.11 using ssh
+WARNING: Failed to authenticate vagrant to 192.168.33.11 - trying password auth
+Enter password for vagrant@192.168.33.11: 
+Connecting to 192.168.33.11 using ssh
+The authenticity of host '192.168.33.11 ()' can't be established.
+fingerprint is SHA256:RPncNc9vINTBApbEdiEhu2pGWPiwIpy9X6DsPfVK0Zs.
+
+Are you sure you want to continue connecting
+? (Y/N) Y
+Connecting to 192.168.33.11 using ssh
+WARN: [SSH] connection failed, terminating (#<Net::SSH::AuthenticationFailed: Authentication failed for user vagrant@192.168.33.11>)
+ERROR: Train::Transports::SSHFailed: SSH session could not be established
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ passwd vagrantknife bootstrap 192.168.33.11 -N webserver01
+usage: passwd [-i infosystem] -l location]] [-u authname] [name]
+  infosystem:
+    file
+    NIS
+    OpenDirectory
+    PAM
+  location (for infosystem):
+    file           location is path to file (default is /etc/master.passwd)
+    NIS            location is NIS domain name
+    OpenDirectory  location is directory node name
+    PAM            location is not used
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife bootstrap 192.168.33.11 -N webserver01
+Connecting to 192.168.33.11 using ssh
+WARNING: Failed to authenticate  to 192.168.33.11 - trying password auth
+Enter password for @192.168.33.11: Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife bootstrap 192.168.33.11 --sudo -U root -N webserver01
+Connecting to 192.168.33.11 using ssh
+WARNING: Failed to authenticate root to 192.168.33.11 - trying password auth
+Enter password for root@192.168.33.11: 
+Connecting to 192.168.33.11 using ssh
+The authenticity of host '192.168.33.11 ()' can't be established.
+fingerprint is SHA256:RPncNc9vINTBApbEdiEhu2pGWPiwIpy9X6DsPfVK0Zs.
+
+Are you sure you want to continue connecting
+? (Y/N) Y
+Connecting to 192.168.33.11 using ssh
+Creating new client for webserver01
+Creating new node for webserver01
+Bootstrapping 192.168.33.11
+ [192.168.33.11] -----> Installing Chef Omnibus (stable/16)
+downloading https://omnitruck.chef.io/chef/install.sh
+  to file /tmp/install.sh.12443/install.sh
+ [192.168.33.11] trying wget...
+ [192.168.33.11] el 7 x86_64
+ [192.168.33.11] Getting information for chef stable 16 for el...
+downloading https://omnitruck.chef.io/stable/chef/metadata?v=16&p=el&pv=7&m=x86_64
+  to file /tmp/install.sh.12450/metadata.txt
+ [192.168.33.11] trying wget...
+ [192.168.33.11] sha1   dcea93cba94d9e5caca3bc21a32e850805a15bf9
+sha256  1cde903944c7411a472395ceb64c1d39c79b7be6cac2769474c46c391d23baee
+url     https://packages.chef.io/files/stable/chef/16.10.8/el/7/chef-16.10.8-1.el7.x86_64.rpm
+version 16.10.8
+ [192.168.33.11] 
+ [192.168.33.11] downloaded metadata file looks valid...
+ [192.168.33.11] downloading https://packages.chef.io/files/stable/chef/16.10.8/el/7/chef-16.10.8-1.el7.x86_64.rpm
+  to file /tmp/install.sh.12450/chef-16.10.8-1.el7.x86_64.rpm
+ [192.168.33.11] trying wget...
+ [192.168.33.11] Comparing checksum with sha256sum...
+ [192.168.33.11] Installing chef 16
+installing with rpm...
+ [192.168.33.11] warning: /tmp/install.sh.12450/chef-16.10.8-1.el7.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 83ef826a: NOKEY
+ [192.168.33.11] Preparing...                          
+ [192.168.33.11] ########################################
+ [192.168.33.11] Updating / installing...
+chef-16.10.8-1.el7                    
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] #
+ [192.168.33.11] Thank you for installing Chef Infra Client! For help getting started visit https://learn.chef.io
+ [192.168.33.11] Starting the first Chef Infra Client Client run...
+ [192.168.33.11] +---------------------------------------------+
+✔ 2 product licenses accepted.
++---------------------------------------------+
+ [192.168.33.11] Starting Chef Infra Client, version 16.10.8
+Patents: https://www.chef.io/patents
+ [192.168.33.11] resolving cookbooks for run list: []
+ [192.168.33.11] Synchronizing Cookbooks:
+ [192.168.33.11] Installing Cookbook Gems:
+Compiling Cookbooks...
+ [192.168.33.11] [2021-02-14T03:37:44+00:00] WARN: Node webserver01 has an empty run list.
+ [192.168.33.11] Converging 0 resources
+ [192.168.33.11] 
+Running handlers:
+Running handlers complete
+Chef Infra Client finished, 0/0 resources updated in 07 seconds
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife search node
+0 items found
+
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife search node “.” -a fqdn
+ERROR: knife search failed: invalid search query: 'tags:*“.”* OR roles:*“.”* OR fqdn:*“.”* OR addresses:*“.”* OR policy_name:*“.”* OR policy_group:*“.”*'
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife search node "*.*" -a fqdn
+1 items found
+
+webserver01:
+  fqdn: localhost
+
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife cookbook upload apacheUploading apache         [0.1.0]
+Uploaded 1 cookbook.
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife node run_list add webserver01
+ERROR: knife encountered an unexpected error
+This may be a bug in the 'node run list add' knife command or plugin
+Please collect the output of this command with the `-VVV` option before filing a bug report.
+Exception: NoMethodError: undefined method `split' for nil:NilClass
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife node run_list add webserver01 “recipe[apache]”
+ERROR: ArgumentError: Unable to create Chef::RunList::RunListItem from String:"“recipe[apache]”": must be recipe[] or role[]
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife node run_list add webserver01 "recipe[apache]"
+webserver01:
+  run_list: recipe[apache]
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ chef-client
+[2021-02-13T19:57:14-08:00] WARN: *****************************************
+[2021-02-13T19:57:14-08:00] WARN: Did not find config file: /etc/chef/client.rb. Using command line options instead.
+[2021-02-13T19:57:14-08:00] WARN: *****************************************
+Starting Chef Infra Client, version 16.10.8
+Patents: https://www.chef.io/patents
+Creating a new client identity for localhost using the validator key.
+
+================================================================================
+Chef encountered an error attempting to create the client "localhost"
+================================================================================
+
+System Info:
+------------
+chef_version=16.10.8
+ruby=ruby 2.7.2p137 (2020-10-01 revision 5445e04352) [x86_64-darwin17]
+program_name=/usr/local/bin/chef-client
+executable=/opt/chef/bin/chef-client
+
+
+Running handlers:
+[2021-02-13T19:57:27-08:00] ERROR: Running exception handlers
+Running handlers complete
+[2021-02-13T19:57:27-08:00] ERROR: Exception handlers complete
+Chef Infra Client failed. 0 resources updated in 12 seconds
+[2021-02-13T19:57:27-08:00] WARN: Failed to read the private key /etc/chef/client.pem: #<Errno::ENOENT: No such file or directory @ rb_sysopen - /etc/chef/client.pem>
+[2021-02-13T19:57:27-08:00] WARN: Error while reporting run start to Data Collector. URL: https://localhost:443/data-collector Exception: No HTTP Code -- I cannot read /etc/chef/client.pem, which you told me to use to sign requests! 
+[2021-02-13T19:57:27-08:00] WARN: Failed to read the private key /etc/chef/client.pem: #<Errno::ENOENT: No such file or directory @ rb_sysopen - /etc/chef/client.pem>
+[2021-02-13T19:57:27-08:00] WARN: Error while reporting run start to Data Collector. URL: https://localhost:443/data-collector Exception: No HTTP Code -- I cannot read /etc/chef/client.pem, which you told me to use to sign requests! 
+/opt/chef/embedded/lib/ruby/gems/2.7.0/gems/chef-16.10.8/lib/chef/compliance/runner.rb:23: warning: Chef::Compliance::Runner#logger at /opt/chef/embedded/lib/ruby/2.7.0/forwardable.rb:154 forwarding to private method NilClass#logger
+[2021-02-13T19:57:27-08:00] FATAL: NoMethodError: undefined method `logger' for nil:NilClass
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife cookbook upload apache
+Uploading apache         [0.1.0]
+FATAL: Cookbook file attributes/defaut.rb has a ruby syntax error:
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife cookbook upload apache
+Uploading apache         [0.1.0]
+FATAL: Cookbook file attributes/defaut.rb has a ruby syntax error:
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife cookbook upload apache
+Uploading apache         [0.1.0]
+Uploaded 1 cookbook.
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife node run_list add webserver01 “recipe[apache]”
+ERROR: ArgumentError: Unable to create Chef::RunList::RunListItem from String:"“recipe[apache]”": must be recipe[] or role[]
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ knife node run_list add webserver01 "recipe[apache]"
+webserver01:
+  run_list: recipe[apache]
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ chef-client
+[2021-02-13T20:01:53-08:00] WARN: *****************************************
+[2021-02-13T20:01:53-08:00] WARN: Did not find config file: /etc/chef/client.rb. Using command line options instead.
+[2021-02-13T20:01:53-08:00] WARN: *****************************************
+Starting Chef Infra Client, version 16.10.8
+Patents: https://www.chef.io/patents
+Creating a new client identity for localhost using the validator key.
+
+================================================================================
+Chef encountered an error attempting to create the client "localhost"
+================================================================================
+
+System Info:
+------------
+chef_version=16.10.8
+ruby=ruby 2.7.2p137 (2020-10-01 revision 5445e04352) [x86_64-darwin17]
+program_name=/usr/local/bin/chef-client
+executable=/opt/chef/bin/chef-client
+
+
+Running handlers:
+[2021-02-13T20:02:02-08:00] ERROR: Running exception handlers
+Running handlers complete
+[2021-02-13T20:02:02-08:00] ERROR: Exception handlers complete
+Chef Infra Client failed. 0 resources updated in 08 seconds
+[2021-02-13T20:02:02-08:00] WARN: Failed to read the private key /etc/chef/client.pem: #<Errno::ENOENT: No such file or directory @ rb_sysopen - /etc/chef/client.pem>
+[2021-02-13T20:02:02-08:00] WARN: Error while reporting run start to Data Collector. URL: https://localhost:443/data-collector Exception: No HTTP Code -- I cannot read /etc/chef/client.pem, which you told me to use to sign requests! 
+[2021-02-13T20:02:02-08:00] WARN: Failed to read the private key /etc/chef/client.pem: #<Errno::ENOENT: No such file or directory @ rb_sysopen - /etc/chef/client.pem>
+[2021-02-13T20:02:02-08:00] WARN: Error while reporting run start to Data Collector. URL: https://localhost:443/data-collector Exception: No HTTP Code -- I cannot read /etc/chef/client.pem, which you told me to use to sign requests! 
+/opt/chef/embedded/lib/ruby/gems/2.7.0/gems/chef-16.10.8/lib/chef/compliance/runner.rb:23: warning: Chef::Compliance::Runner#logger at /opt/chef/embedded/lib/ruby/2.7.0/forwardable.rb:154 forwarding to private method NilClass#logger
+[2021-02-13T20:02:02-08:00] FATAL: NoMethodError: undefined method `logger' for nil:NilClass
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ cd ..
+Sudhirs-MacBook-Pro-3:chef-repo stomar-n$ berk install
+sh: berk: command not found
+Sudhirs-MacBook-Pro-3:chef-repo stomar-n$ berks install
+An error occurred while reading the Berksfile:
+
+  '' is not a valid Berkshelf source URI. invalid URI scheme ''. Valid schemes: ["http", "https", "file"].
+Sudhirs-MacBook-Pro-3:chef-repo stomar-n$ berks install
+Resolving cookbook dependencies...
+Fetching cookbook index from https://supermarket.chef.io...
+Installing nginx (11.3.0)
+Installing ohai (5.3.0)
+Sudhirs-MacBook-Pro-3:chef-repo stomar-n$ kitchen node delete
+Could not find command "node".
+Sudhirs-MacBook-Pro-3:chef-repo stomar-n$ kitchen node delete "webserver01"
+Could not find command "node".
+Sudhirs-MacBook-Pro-3:chef-repo stomar-n$ kitchen delete node
+Could not find command "delete".
+Sudhirs-MacBook-Pro-3:chef-repo stomar-n$ cd cookbooks/
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ kitchen node delete "webserver01"
+Could not find command "node".
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ kitchen delete node
+Could not find command "delete".
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ kitchen
+Commands:
+  kitchen console                                 # Kitchen Console!
+  kitchen converge [INSTANCE|REGEXP|all]          # Change instance state to converge. Use a provisio...
+  kitchen create [INSTANCE|REGEXP|all]            # Change instance state to create. Start one or mor...
+  kitchen destroy [INSTANCE|REGEXP|all]           # Change instance state to destroy. Delete all info...
+  kitchen diagnose [INSTANCE|REGEXP|all]          # Show computed diagnostic configuration
+  kitchen doctor INSTANCE|REGEXP                  # Check for common system problems
+  kitchen exec INSTANCE|REGEXP -c REMOTE_COMMAND  # Execute command on one or more instance
+  kitchen help [COMMAND]                          # Describe available commands or one specific command
+  kitchen init                                    # Adds some configuration to your cookbook so Kitch...
+  kitchen list [INSTANCE|REGEXP|all]              # Lists one or more instances
+  kitchen login INSTANCE|REGEXP                   # Log in to one instance
+  kitchen package INSTANCE|REGEXP                 # package an instance
+  kitchen setup [INSTANCE|REGEXP|all]             # Change instance state to setup. Prepare to run au...
+  kitchen test [INSTANCE|REGEXP|all]              # Test (destroy, create, converge, setup, verify an...
+  kitchen verify [INSTANCE|REGEXP|all]            # Change instance state to verify. Run automated te...
+  kitchen version                                 # Print Kitchen's version information
+
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ kitchen destroy node
+-----> Starting Test Kitchen (v2.10.0)
+>>>>>> ------Exception-------
+>>>>>> Class: Kitchen::UserError
+>>>>>> Message: Kitchen YAML file /Users/stomar-n/001_sudhir_2021/cognixia/devops/chef-repo/cookbooks/kitchen.yml does not exist.
+>>>>>> ----------------------
+>>>>>> Please see .kitchen/logs/kitchen.log for more details
+>>>>>> Also try running `kitchen diagnose --all` for configuration
+
+Sudhirs-MacBook-Pro-3:cookbooks stomar-n$ cd apache/
+Sudhirs-MacBook-Pro-3:apache stomar-n$ kitchen destroy node
+-----> Starting Test Kitchen (v2.10.0)
+>>>>>> 
+No instances for regex `node', try running `kitchen list'
+
+
+Usage:
+  kitchen destroy [INSTANCE|REGEXP|all]
+
+Options:
+  -c, [--concurrency=N]                        # Run a destroy against all matching instances concurrently. Only N instances will run at the same time if a number is given. 
+  -p, [--parallel], [--no-parallel]            # [Future DEPRECATION, use --concurrency] Run a destroy against all matching instances concurrently. 
+  -f, [--fail-fast], [--no-fail-fast]          # Fail immediately when errors occur in concurrency mode
+  -t, [--test-base-path=TEST_BASE_PATH]        # Set the base path of the tests
+  -l, [--log-level=LOG_LEVEL]                  # Set the log level (debug, info, warn, error, fatal)
+      [--log-overwrite], [--no-log-overwrite]  # Set to false to prevent log overwriting each time Test Kitchen runs
+      [--color], [--no-color]                  # Toggle color output for STDOUT logger
+
+Description:
+  The instance states are in order: destroy, create, converge, setup, verify, destroy. Change one or
+  more instances from the current state to the destroy state. Actions for all intermediate states will
+  be executed. See https://kitchen.ci/ for further explanation.
+Sudhirs-MacBook-Pro-3:apache stomar-n$ kicten list
+sh: kicten: command not found
+Sudhirs-MacBook-Pro-3:apache stomar-n$ kitchen list
+Instance             Driver   Provisioner  Verifier  Transport  Last Action    Last Error
+default-ubuntu-2004  Vagrant  ChefZero     Inspec    Ssh        <Not Created>  <None>
+default-centos-8     Vagrant  ChefZero     Inspec    Ssh        <Not Created>  <None>
+Sudhirs-MacBook-Pro-3:apache stomar-n$ kitchen destroy default-centos-8
+-----> Starting Test Kitchen (v2.10.0)
+-----> Destroying <default-centos-8>...
+       Finished destroying <default-centos-8> (0m0.00s).
+-----> Test Kitchen is finished. (0m1.22s)
+Sudhirs-MacBook-Pro-3:apache stomar-n$ kitchen destroy default-ubuntu-2004 
+-----> Starting Test Kitchen (v2.10.0)
+-----> Destroying <default-ubuntu-2004>...
+       Finished destroying <default-ubuntu-2004> (0m0.00s).
+-----> Test Kitchen is finished. (0m1.15s)
+Sudhirs-MacBook-Pro-3:apache stomar-n$ kitchen list
+Instance             Driver   Provisioner  Verifier  Transport  Last Action    Last Error
+default-ubuntu-2004  Vagrant  ChefZero     Inspec    Ssh        <Not Created>  <None>
+default-centos-8     Vagrant  ChefZero     Inspec    Ssh        <Not Created>  <None>
+Sudhirs-MacBook-Pro-3:apache stomar-n$ kitchen list
+Instance             Driver   Provisioner  Verifier  Transport  Last Action    Last Error
+default-ubuntu-2004  Vagrant  ChefZero     Inspec    Ssh        <Not Created>  <None>
+default-centos-8     Vagrant  ChefZero     Inspec    Ssh        <Not Created>  <None>
+Sudhirs-MacBook-Pro-3:apache stomar-n$ knife delete node
+ERROR: node: No such file or directory
+Sudhirs-MacBook-Pro-3:apache stomar-n$ knife node delete
+USAGE: knife node delete [NODE [NODE]] (options)
+    -s, --server-url URL             Chef Infra Server URL.
+        --chef-zero-host HOST        Host to start Chef Infra Zero on.
+        --chef-zero-port PORT        Port (or port range) to start Chef Infra Zero on. Port ranges like 1000,1010 or 8889-9999 will try all given ports until one works.
+    -k, --key KEY                    Chef Infra Server API client key.
+        --[no-]color                 Use colored output, defaults to enabled.
+    -c, --config CONFIG              The configuration file to use.
+        --config-option OPTION=VALUE Override a single configuration option.
+        --defaults                   Accept default values for all questions.
+    -d, --disable-editing            Do not open EDITOR, just accept the data as is.
+    -e, --editor EDITOR              Set the editor to use for interactive commands.
+    -E, --environment ENVIRONMENT    Set the Chef Infra Client environment (except for in searches, where this will be flagrantly ignored).
+        --[no-]fips                  Enable FIPS mode.
+    -F, --format FORMAT              Which format to use for output. (valid options: 'summary', 'text', 'json', 'yaml', or 'pp')
+        --[no-]listen                Whether a local mode (-z) server binds to a port.
+    -z, --local-mode                 Point knife commands at local repository instead of Chef Infra Server.
+    -u, --user USER                  Chef Infra Server API client username.
+        --print-after                Show the data after a destructive operation.
+        --profile PROFILE            The credentials profile to select.
+    -V, --verbose                    More verbose output. Use twice (-VV) for additional verbosity and three times (-VVV) for maximum verbosity.
+    -v, --version                    Show Chef Infra Client version.
+    -y, --yes                        Say yes to all prompts for confirmation.
+    -h, --help                       Show this help message.
+FATAL: You must specify at least one node name
+Sudhirs-MacBook-Pro-3:apache stomar-n$ knife node delete "webserver01"
+Do you really want to delete webserver01? (Y/N) Y
+ERROR: The object you are looking for could not be found
+Response: node 'webserver01' not found
+Sudhirs-MacBook-Pro-3:apache stomar-n$ 
+
+Last login: Fri Feb 12 20:49:01 on ttys002
+(eval):40: command not found: compdef
+(base) stomar-n@Sudhirs-MacBook-Pro-3 ~ % chef-dk
+zsh: command not found: chef-dk
+(base) stomar-n@Sudhirs-MacBook-Pro-3 ~ % chef -v
+Chef Workstation version: 21.2.259
+Chef Infra Client version: 16.10.8
+Chef InSpec version: 4.26.4
+Chef CLI version: 3.1.0
+Chef Habitat version: 1.6.181
+Test Kitchen version: 2.10.0
+Cookstyle version: 7.7.2
+(base) stomar-n@Sudhirs-MacBook-Pro-3 ~ % chef-client
+[2021-02-12T21:15:17-08:00] WARN: *****************************************
+[2021-02-12T21:15:17-08:00] WARN: Did not find config file: /etc/chef/client.rb. Using command line options instead.
+[2021-02-12T21:15:17-08:00] WARN: *****************************************
+Starting Chef Infra Client, version 16.10.8
+Patents: https://www.chef.io/patents
+Creating a new client identity for localhost using the validator key.
+
+================================================================================
+Chef encountered an error attempting to create the client "localhost"
+================================================================================
+
+System Info:
+------------
+chef_version=16.10.8
+ruby=ruby 2.7.2p137 (2020-10-01 revision 5445e04352) [x86_64-darwin17]
+program_name=/opt/chef-workstation/bin/chef-client
+executable=/opt/chef-workstation/bin/chef-client
+
+
+Running handlers:
+[2021-02-12T21:15:31-08:00] ERROR: Running exception handlers
+Running handlers complete
+[2021-02-12T21:15:31-08:00] ERROR: Exception handlers complete
+Chef Infra Client failed. 0 resources updated in 14 seconds
+[2021-02-12T21:15:31-08:00] WARN: Failed to read the private key /etc/chef/client.pem: #<Errno::ENOENT: No such file or directory @ rb_sysopen - /etc/chef/client.pem>
+[2021-02-12T21:15:31-08:00] WARN: Error while reporting run start to Data Collector. URL: https://localhost:443/data-collector Exception: No HTTP Code -- I cannot read /etc/chef/client.pem, which you told me to use to sign requests! 
+[2021-02-12T21:15:31-08:00] WARN: Failed to read the private key /etc/chef/client.pem: #<Errno::ENOENT: No such file or directory @ rb_sysopen - /etc/chef/client.pem>
+[2021-02-12T21:15:31-08:00] WARN: Error while reporting run start to Data Collector. URL: https://localhost:443/data-collector Exception: No HTTP Code -- I cannot read /etc/chef/client.pem, which you told me to use to sign requests! 
+/opt/chef-workstation/embedded/lib/ruby/gems/2.7.0/gems/chef-16.10.8/lib/chef/compliance/runner.rb:23: warning: Chef::Compliance::Runner#logger at /opt/chef-workstation/embedded/lib/ruby/2.7.0/forwardable.rb:154 forwarding to private method NilClass#logger
+[2021-02-12T21:15:31-08:00] FATAL: NoMethodError: undefined method `logger' for nil:NilClass
+(base) stomar-n@Sudhirs-MacBook-Pro-3 ~ % cd ~/001_sudhir_2021 
+(base) stomar-n@Sudhirs-MacBook-Pro-3 001_sudhir_2021 % cd cognixia 
+(base) stomar-n@Sudhirs-MacBook-Pro-3 cognixia % ls -la
+total 16
+drwxr-xr-x   5 stomar-n  staff   160 Feb 12 20:01 .
+drwxr-xr-x  11 stomar-n  staff   352 Feb  9 16:29 ..
+-rw-r--r--@  1 stomar-n  staff  6148 Feb 12 20:01 .DS_Store
+drwxr-xr-x  13 stomar-n  staff   416 Feb  6 21:24 .git
+drwxr-xr-x  11 stomar-n  staff   352 Feb 12 20:01 devops
+(base) stomar-n@Sudhirs-MacBook-Pro-3 cognixia % cd devops 
+(base) stomar-n@Sudhirs-MacBook-Pro-3 devops % ls -la
+total 32
+drwxr-xr-x  11 stomar-n  staff   352 Feb 12 20:01 .
+drwxr-xr-x   5 stomar-n  staff   160 Feb 12 20:01 ..
+-rw-r--r--@  1 stomar-n  staff  6148 Feb 12 20:01 .DS_Store
+drwxr-xr-x   4 stomar-n  staff   128 Feb 12 19:57 chef
+drwxr-xr-x@  8 stomar-n  staff   256 Feb 12 20:02 chef-repo
+-rw-r--r--@  1 stomar-n  staff  7821 Feb 12 20:01 chef-starter.zip
+drwxr-xr-x   4 stomar-n  staff   128 Feb  6 21:22 docker
+drwxr-xr-x  12 stomar-n  staff   384 Jan 30 21:35 infra-automation
+drwxr-xr-x   4 stomar-n  staff   128 Jan 29 20:33 iself
+drwxr-xr-x   3 stomar-n  staff    96 Feb  6 21:22 vm1
+drwxr-xr-x   3 stomar-n  staff    96 Feb  6 21:22 vm2
+(base) stomar-n@Sudhirs-MacBook-Pro-3 devops % cd chef-starter.zip 
+cd: not a directory: chef-starter.zip
+(base) stomar-n@Sudhirs-MacBook-Pro-3 devops % cd chef-repo 
+(base) stomar-n@Sudhirs-MacBook-Pro-3 chef-repo % ls -la
+total 32
+drwxr-xr-x@  8 stomar-n  staff   256 Feb 12 20:02 .
+drwxr-xr-x  11 stomar-n  staff   352 Feb 12 20:01 ..
+-rw-r--r--@  1 stomar-n  staff  6148 Feb 12 20:02 .DS_Store
+drwxr-xr-x@  4 stomar-n  staff   128 Feb 13  2021 .chef
+-rw-r--r--@  1 stomar-n  staff   495 Feb 13  2021 .gitignore
+-rw-r--r--@  1 stomar-n  staff  2340 Feb 13  2021 README.md
+drwxr-xr-x@  5 stomar-n  staff   160 Feb 12 20:02 cookbooks
+drwxr-xr-x@  3 stomar-n  staff    96 Feb 13  2021 roles
+(base) stomar-n@Sudhirs-MacBook-Pro-3 chef-repo % chef-client         
+[2021-02-12T21:16:16-08:00] WARN: *****************************************
+[2021-02-12T21:16:16-08:00] WARN: Did not find config file: /etc/chef/client.rb. Using command line options instead.
+[2021-02-12T21:16:16-08:00] WARN: *****************************************
+Starting Chef Infra Client, version 16.10.8
+Patents: https://www.chef.io/patents
+Creating a new client identity for localhost using the validator key.
+
+================================================================================
+Chef encountered an error attempting to create the client "localhost"
+================================================================================
+
+System Info:
+------------
+chef_version=16.10.8
+ruby=ruby 2.7.2p137 (2020-10-01 revision 5445e04352) [x86_64-darwin17]
+program_name=/opt/chef-workstation/bin/chef-client
+executable=/opt/chef-workstation/bin/chef-client
+
+
+Running handlers:
+[2021-02-12T21:16:25-08:00] ERROR: Running exception handlers
+Running handlers complete
+[2021-02-12T21:16:25-08:00] ERROR: Exception handlers complete
+Chef Infra Client failed. 0 resources updated in 09 seconds
+[2021-02-12T21:16:25-08:00] WARN: Failed to read the private key /etc/chef/client.pem: #<Errno::ENOENT: No such file or directory @ rb_sysopen - /etc/chef/client.pem>
+[2021-02-12T21:16:25-08:00] WARN: Error while reporting run start to Data Collector. URL: https://localhost:443/data-collector Exception: No HTTP Code -- I cannot read /etc/chef/client.pem, which you told me to use to sign requests! 
+[2021-02-12T21:16:25-08:00] WARN: Failed to read the private key /etc/chef/client.pem: #<Errno::ENOENT: No such file or directory @ rb_sysopen - /etc/chef/client.pem>
+[2021-02-12T21:16:25-08:00] WARN: Error while reporting run start to Data Collector. URL: https://localhost:443/data-collector Exception: No HTTP Code -- I cannot read /etc/chef/client.pem, which you told me to use to sign requests! 
+/opt/chef-workstation/embedded/lib/ruby/gems/2.7.0/gems/chef-16.10.8/lib/chef/compliance/runner.rb:23: warning: Chef::Compliance::Runner#logger at /opt/chef-workstation/embedded/lib/ruby/2.7.0/forwardable.rb:154 forwarding to private method NilClass#logger
+[2021-02-12T21:16:25-08:00] FATAL: NoMethodError: undefined method `logger' for nil:NilClass
+(base) stomar-n@Sudhirs-MacBook-Pro-3 chef-repo % cd .chef 
+(base) stomar-n@Sudhirs-MacBook-Pro-3 .chef % ls -la
+total 16
+drwxr-xr-x@ 4 stomar-n  staff   128 Feb 13  2021 .
+drwxr-xr-x@ 8 stomar-n  staff   256 Feb 12 20:02 ..
+-rw-r--r--@ 1 stomar-n  staff   412 Feb 13  2021 config.rb
+-rw-r--r--@ 1 stomar-n  staff  1678 Feb 13  2021 tomarskt.pem
+(base) stomar-n@Sudhirs-MacBook-Pro-3 .chef % chef-client
+[2021-02-12T21:18:34-08:00] WARN: *****************************************
+[2021-02-12T21:18:34-08:00] WARN: Did not find config file: /etc/chef/client.rb. Using command line options instead.
+[2021-02-12T21:18:34-08:00] WARN: *****************************************
+Starting Chef Infra Client, version 16.10.8
+Patents: https://www.chef.io/patents
+Creating a new client identity for localhost using the validator key.
+
+================================================================================
+Chef encountered an error attempting to create the client "localhost"
+================================================================================
+
+System Info:
+------------
+chef_version=16.10.8
+ruby=ruby 2.7.2p137 (2020-10-01 revision 5445e04352) [x86_64-darwin17]
+program_name=/opt/chef-workstation/bin/chef-client
+executable=/opt/chef-workstation/bin/chef-client
+
+
+Running handlers:
+[2021-02-12T21:18:43-08:00] ERROR: Running exception handlers
+Running handlers complete
+[2021-02-12T21:18:43-08:00] ERROR: Exception handlers complete
+Chef Infra Client failed. 0 resources updated in 08 seconds
+[2021-02-12T21:18:43-08:00] WARN: Failed to read the private key /etc/chef/client.pem: #<Errno::ENOENT: No such file or directory @ rb_sysopen - /etc/chef/client.pem>
+[2021-02-12T21:18:43-08:00] WARN: Error while reporting run start to Data Collector. URL: https://localhost:443/data-collector Exception: No HTTP Code -- I cannot read /etc/chef/client.pem, which you told me to use to sign requests! 
+[2021-02-12T21:18:43-08:00] WARN: Failed to read the private key /etc/chef/client.pem: #<Errno::ENOENT: No such file or directory @ rb_sysopen - /etc/chef/client.pem>
+[2021-02-12T21:18:43-08:00] WARN: Error while reporting run start to Data Collector. URL: https://localhost:443/data-collector Exception: No HTTP Code -- I cannot read /etc/chef/client.pem, which you told me to use to sign requests! 
+/opt/chef-workstation/embedded/lib/ruby/gems/2.7.0/gems/chef-16.10.8/lib/chef/compliance/runner.rb:23: warning: Chef::Compliance::Runner#logger at /opt/chef-workstation/embedded/lib/ruby/2.7.0/forwardable.rb:154 forwarding to private method NilClass#logger
+[2021-02-12T21:18:43-08:00] FATAL: NoMethodError: undefined method `logger' for nil:NilClass
+(base) stomar-n@Sudhirs-MacBook-Pro-3 .chef % cat config.rb
+# See http://docs.chef.io/config_rb.html for more information on knife configuration options
+
+current_dir = File.dirname(__FILE__)
+log_level                :info
+log_location             STDOUT
+node_name                "tomarskt"
+client_key               "#{current_dir}/tomarskt.pem"
+chef_server_url          "https://api.chef.io/organizations/itextech"
+cookbook_path            ["#{current_dir}/../cookbooks"]
+(base) stomar-n@Sudhirs-MacBook-Pro-3 .chef % knife help list
+FATAL: Cannot find subcommand for: 'help list'
+Available subcommands: (for details, knife SUB-COMMAND --help)
+
+** CHEF ORGANIZATION MANAGEMENT COMMANDS **
+knife opc org create ORG_SHORT_NAME ORG_FULL_NAME (options)
+knife opc org delete ORG_NAME
+knife opc org edit ORG
+knife opc org list
+knife opc org show ORGNAME
+knife opc org user add ORG_NAME USER_NAME
+knife opc org user remove ORG_NAME USER_NAME
+knife opc user create USERNAME FIRST_NAME [MIDDLE_NAME] LAST_NAME EMAIL PASSWORD
+knife opc user delete USERNAME [-d] [-R]
+knife opc user edit USERNAME
+knife opc user list
+knife opc user password USERNAME [PASSWORD | --enable-external-auth]
+knife opc user show USERNAME
+
+** ACL COMMANDS **
+knife acl add MEMBER_TYPE MEMBER_NAME OBJECT_TYPE OBJECT_NAME PERMS
+knife acl bulk add MEMBER_TYPE MEMBER_NAME OBJECT_TYPE REGEX PERMS
+knife acl bulk remove MEMBER_TYPE MEMBER_NAME OBJECT_TYPE REGEX PERMS
+knife acl remove MEMBER_TYPE MEMBER_NAME OBJECT_TYPE OBJECT_NAME PERMS
+knife acl show OBJECT_TYPE OBJECT_NAME
+
+** AZURE COMMANDS **
+knife azure ag create (options)
+knife azure ag list (options)
+knife azure image list (options)
+knife azure internal lb create (options)
+knife azure internal lb list (options)
+knife azure server create (options)
+knife azure server delete SERVER [SERVER] (options)
+knife azure server list (options)
+knife azure server show SERVER [SERVER]
+knife azure vnet create (options)
+knife azure vnet list (options)
+
+** AZURERM COMMANDS **
+knife azurerm server create (options)
+knife azurerm server delete SERVER [SERVER] (options)
+knife azurerm server list (options)
+knife azurerm server show SERVER (options)
+
+** BASE COMMANDS **
+Usage: /opt/chef-workstation/bin/knife (options)
+
+** BOOTSTRAP COMMANDS **
+knife bootstrap [PROTOCOL://][USER@]FQDN (options)
+knife bootstrap azure SERVER (options)
+knife bootstrap azurerm SERVER (options)
+Usage: /opt/chef-workstation/bin/knife (options)
+knife bootstrap windows ssh FQDN (options) DEPRECATED
+knife bootstrap windows winrm FQDN (options) DEPRECATED
+
+** CLIENT COMMANDS **
+knife client bulk delete REGEX (options)
+knife client create CLIENTNAME (options)
+knife client delete [CLIENT [CLIENT]] (options)
+knife client edit CLIENT (options)
+knife client key create CLIENT (options)
+knife client key delete CLIENT KEYNAME (options)
+knife client key edit CLIENT KEYNAME (options)
+knife client key list CLIENT (options)
+knife client key show CLIENT KEYNAME (options)
+knife client list (options)
+knife client reregister CLIENT (options)
+knife client show CLIENT (options)
+
+** COMMAND COMMANDS **
+Usage: /opt/chef-workstation/bin/knife (options)
+
+** CONFIG COMMANDS **
+knife config list (options)
+knife config show [OPTION...] (options)
+Displays the value of Chef::Config[OPTION] (or all config values)
+knife config use [PROFILE]
+
+** CONFIGURE COMMANDS **
+knife configure (options)
+knife configure client DIRECTORY
+
+** COOKBOOK COMMANDS **
+knife cookbook bulk delete REGEX (options)
+knife cookbook delete COOKBOOK VERSION (options)
+knife cookbook download COOKBOOK [VERSION] (options)
+knife cookbook list (options)
+knife cookbook metadata COOKBOOK (options)
+knife cookbook metadata from file FILE (options)
+knife cookbook show COOKBOOK [VERSION] [PART] [FILENAME] (options)
+knife cookbook upload [COOKBOOKS...] (options)
+
+** DATA BAG COMMANDS **
+knife data bag create BAG [ITEM] (options)
+knife data bag delete BAG [ITEM] (options)
+knife data bag edit BAG ITEM (options)
+knife data bag from file BAG FILE|FOLDER [FILE|FOLDER..] (options)
+knife data bag list (options)
+knife data bag show BAG [ITEM] (options)
+
+** EC2 COMMANDS **
+knife ec2 ami list (options)
+knife ec2 eni list (options)
+knife ec2 flavor list (options) [DEPRECATED]
+knife ec2 securitygroup list (options)
+knife ec2 server create (options)
+knife ec2 server delete SERVER [SERVER] (options)
+knife ec2 server list (options)
+knife ec2 subnet list (options)
+knife ec2 vpc list (options)
+
+** ENVIRONMENT COMMANDS **
+knife environment compare [ENVIRONMENT..] (options)
+knife environment create ENVIRONMENT (options)
+knife environment delete ENVIRONMENT (options)
+knife environment edit ENVIRONMENT (options)
+knife environment from file FILE [FILE..] (options)
+knife environment list (options)
+knife environment show ENVIRONMENT (options)
+
+** EXEC COMMANDS **
+knife exec [SCRIPT] (options)
+
+** GOOGLE COMMANDS **
+knife google disk create NAME --gce-disk-size N (options)
+knife google disk delete NAME [NAME] (options)
+knife google disk list
+knife google image list
+knife google project quotas
+knife google region list
+knife google region quotas
+knife google server create NAME -m MACHINE_TYPE -I IMAGE (options)
+knife google server delete INSTANCE_NAME [INSTANCE_NAME] (options)
+knife google server list
+knife google server show INSTANCE_NAME (options)
+knife google zone list
+
+** GROUP COMMANDS **
+knife group add MEMBER_TYPE MEMBER_NAME GROUP_NAME
+knife group create GROUP_NAME
+knife group destroy GROUP_NAME
+knife group list
+knife group remove MEMBER_TYPE MEMBER_NAME GROUP_NAME
+knife group show GROUP_NAME
+
+** KNIFE COMMANDS **
+Usage: /opt/chef-workstation/bin/knife (options)
+
+** NODE COMMANDS **
+knife node bulk delete REGEX (options)
+knife node create NODE (options)
+knife node delete [NODE [NODE]] (options)
+knife node edit NODE (options)
+knife node environment set NODE ENVIRONMENT
+knife node from file FILE (options)
+knife node list (options)
+knife node policy set NODE POLICY_GROUP POLICY_NAME (options)
+knife node run_list add [NODE] [ENTRY [ENTRY]] (options)
+knife node run_list remove [NODE] [ENTRY [ENTRY]] (options)
+knife node run_list set NODE ENTRIES (options)
+knife node show NODE (options)
+
+** PATH-BASED COMMANDS **
+knife delete [PATTERN1 ... PATTERNn]
+knife deps PATTERN1 [PATTERNn]
+knife diff PATTERNS
+knife download PATTERNS
+knife edit [PATTERN1 ... PATTERNn]
+knife list [-dfR1p] [PATTERN1 ... PATTERNn] (options)
+knife show [PATTERN1 ... PATTERNn] (options)
+knife upload PATTERNS (options)
+knife xargs [COMMAND] (options)
+
+** RAW COMMANDS **
+knife raw REQUEST_PATH (options)
+
+** RECIPE COMMANDS **
+knife recipe list [PATTERN]
+
+** REHASH COMMANDS **
+knife rehash
+
+** RESOURCE COMMANDS **
+Usage: /opt/chef-workstation/bin/knife (options)
+
+** ROLE COMMANDS **
+knife role bulk delete REGEX (options)
+knife role create ROLE (options)
+knife role delete ROLE (options)
+knife role edit ROLE (options)
+knife role env_run_list add [ROLE] [ENVIRONMENT] [ENTRY [ENTRY]] (options)
+knife role env_run_list clear [ROLE] [ENVIRONMENT] (options)
+knife role env_run_list remove [ROLE] [ENVIRONMENT] [ENTRIES] (options)
+knife role env_run_list replace [ROLE] [ENVIRONMENT] [OLD_ENTRY] [NEW_ENTRY] (options)
+knife role env_run_list set [ROLE] [ENVIRONMENT] [ENTRIES] (options)
+knife role from file FILE [FILE..] (options)
+knife role list (options)
+knife role run_list add [ROLE] [ENTRY [ENTRY]] (options)
+knife role run_list clear [ROLE] (options)
+knife role run_list remove [ROLE] [ENTRY] (options)
+knife role run_list replace [ROLE] [OLD_ENTRY] [NEW_ENTRY] (options)
+knife role run_list set [ROLE] [ENTRIES] (options)
+knife role show ROLE (options)
+
+** SEARCH COMMANDS **
+knife search INDEX QUERY (options)
+
+** SERVE COMMANDS **
+knife serve (options)
+
+** SERVER COMMANDS **
+Usage: /opt/chef-workstation/bin/knife (options)
+Usage: /opt/chef-workstation/bin/knife (options)
+Usage: /opt/chef-workstation/bin/knife (options)
+Usage: /opt/chef-workstation/bin/knife (options)
+
+** SSH COMMANDS **
+knife ssh QUERY COMMAND (options)
+
+** SSL COMMANDS **
+knife ssl check [URL] (options)
+knife ssl fetch [URL] (options)
+
+** STATUS COMMANDS **
+knife status QUERY (options)
+
+** SUPERMARKET COMMANDS **
+knife supermarket download COOKBOOK [VERSION] (options)
+knife supermarket install COOKBOOK [VERSION] (options)
+knife supermarket list (options)
+knife supermarket search QUERY (options)
+knife supermarket share COOKBOOK [CATEGORY] (options)
+knife supermarket show COOKBOOK [VERSION] (options)
+knife supermarket unshare COOKBOOK
+
+** TAG COMMANDS **
+knife tag create NODE TAG ...
+knife tag delete NODE TAG ...
+knife tag list NODE
+
+** TIDY COMMANDS **
+knife tidy backup clean (options)
+knife tidy notify (options)
+knife tidy server clean (options)
+knife tidy server report (options)
+
+** USER COMMANDS **
+knife user create USERNAME DISPLAY_NAME FIRST_NAME LAST_NAME EMAIL PASSWORD (options)
+knife user delete USER (options)
+knife user dissociate USERNAMES
+knife user edit USER (options)
+knife user invite add USERNAMES
+knife user invite list
+knife user invite rescind [USERNAMES] (options)
+knife user key create USER (options)
+knife user key delete USER KEYNAME (options)
+knife user key edit USER KEYNAME (options)
+knife user key list USER (options)
+knife user key show USER KEYNAME (options)
+knife user list (options)
+knife user reregister USER (options)
+knife user show USER (options)
+
+** VAULT COMMANDS **
+knife vault create VAULT ITEM VALUES (options)
+knife vault delete VAULT ITEM (options)
+knife vault download VAULT ITEM PATH (options)
+knife vault edit VAULT ITEM (options)
+knife vault isvault VAULT ITEM (options)
+knife vault itemtype VAULT ITEM (options)
+knife vault list (options)
+knife vault refresh VAULT ITEM
+knife vault remove VAULT ITEM VALUES (options)
+knife vault rotate all keys
+knife vault rotate keys VAULT ITEM (options)
+knife vault show VAULT [ITEM] [VALUES] (options)
+knife vault update VAULT ITEM VALUES (options)
+
+** VCENTER COMMANDS **
+knife vcenter cluster list
+knife vcenter datacenter list
+knife vcenter host list
+knife vcenter vm clone NAME (options)
+knife vcenter vm create NAME
+knife vcenter vm delete NAME [NAME] (options)
+knife vcenter vm list
+knife vcenter vm show NAME (options)
+
+** VSPHERE COMMANDS **
+knife vsphere cluster list
+knife vsphere cpu ratio [CLUSTER] [HOST]
+knife vsphere customization list
+knife vsphere datastore file
+knife vsphere datastore list
+knife vsphere datastore maxfree
+knife vsphere datastorecluster list
+knife vsphere datastorecluster maxfree
+knife vsphere folder list
+knife vsphere hosts list
+knife vsphere pool list
+knife vsphere pool query POOLNAME QUERY. See "https://pubs.vmware.com/vi3/sdk/ReferenceGuide/vim.ComputeResource.html" for allowed QUERY values.
+knife vsphere pool show POOLNAME QUERY. See "https://pubs.vmware.com/vi3/sdk/ReferenceGuide/vim.ComputeResource.html" for allowed QUERY values.
+knife vsphere template list
+knife vsphere vlan create NAME VID
+knife vsphere vlan list
+knife vsphere vm cdrom VMNAME (options)
+knife vsphere vm clone VMNAME (options)
+knife vsphere vm config VMNAME PROPERTY VALUE (PROPERTY VALUE)...
+          See "https://www.vmware.com/support/developer/converter-sdk/conv60_apireference/vim.vm.ConfigSpec.html"
+          for allowed ATTRIBUTE values (any property of type xs:string is supported).
+knife vsphere vm delete VMNAME (options)
+knife vsphere vm disk extend VMNAME SIZE. Extends the disk of vm VMNAME to SIZE kilobytes.
+knife vsphere vm disk list VMNAME
+knife vsphere vm execute VMNAME COMMAND ARGS
+knife vsphere vm find
+knife vsphere vm list
+knife vsphere vm markastemplate VMNAME
+knife vsphere vm migrate VMNAME (options)
+knife vsphere vm move VMNAME
+knife vsphere vm net STATE VMNAME
+knife vsphere vm network add VMNAME NETWORKNAME
+knife vsphere vm network delete VMNAME NICNAME
+knife vsphere vm network list VMNAME
+knife vsphere vm network set VMNAME NETWORKNAME
+knife vsphere vm property get VMNAME PROPERTY. Gets a vApp Property on VMNAME.
+knife vsphere vm property set VMNAME PROPERTY VALUE. Sets a vApp Property on VMNAME.
+knife vsphere vm show VMNAME QUERY. See "https://pubs.vmware.com/vi3/sdk/ReferenceGuide/vim.VirtualMachine.html" for allowed QUERY values.
+knife vsphere vm snapshot VMNAME (options)
+knife vsphere vm state VMNAME (options)
+knife vsphere vm toolsconfig VMNAME PROPERTY VALUE
+          See "https://www.vmware.com/support/developer/vc-sdk/visdk25pubs/ReferenceGuide/vim.vm.ToolsConfigInfo.html"
+          for available properties and types.
+knife vsphere vm vmdk add VMNAME DISK_GB
+knife vsphere vm vncset VMNAME
+knife vsphere vm wait sysprep VMNAME (options)
+
+** WINDOWS COMMANDS **
+knife windows cert generate FILE_PATH (options)
+knife windows cert install CERT [CERT] (options)
+knife windows listener create (options)
+
+** WINRM COMMANDS **
+knife winrm QUERY COMMAND (options)
+
+** WSMAN COMMANDS **
+knife wsman test QUERY (options)
+
+** YAML COMMANDS **
+knife yaml convert YAML_FILENAME [RUBY_FILENAME]
+
+(base) stomar-n@Sudhirs-MacBook-Pro-3 .chef % ls -la
+total 16
+drwxr-xr-x@ 4 stomar-n  staff   128 Feb 13 04:01 .
+drwxr-xr-x@ 8 stomar-n  staff   256 Feb 12 20:02 ..
+-rw-r--r--@ 1 stomar-n  staff   412 Feb 13 04:01 config.rb
+-rw-r--r--@ 1 stomar-n  staff  1678 Feb 13 04:01 tomarskt.pem
+(base) stomar-n@Sudhirs-MacBook-Pro-3 .chef % cd ..
+(base) stomar-n@Sudhirs-MacBook-Pro-3 chef-repo % ls -la
+total 32
+drwxr-xr-x@  8 stomar-n  staff   256 Feb 12 20:02 .
+drwxr-xr-x  11 stomar-n  staff   352 Feb 12 20:01 ..
+-rw-r--r--@  1 stomar-n  staff  6148 Feb 12 20:02 .DS_Store
+drwxr-xr-x@  4 stomar-n  staff   128 Feb 13 04:01 .chef
+-rw-r--r--@  1 stomar-n  staff   495 Feb 13 04:01 .gitignore
+-rw-r--r--@  1 stomar-n  staff  2340 Feb 13 04:01 README.md
+drwxr-xr-x@  5 stomar-n  staff   160 Feb 12 20:02 cookbooks
+drwxr-xr-x@  3 stomar-n  staff    96 Feb 13 04:01 roles
+(base) stomar-n@Sudhirs-MacBook-Pro-3 chef-repo % git
+usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone     Clone a repository into a new directory
+   init      Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add       Add file contents to the index
+   mv        Move or rename a file, a directory, or a symlink
+   restore   Restore working tree files
+   rm        Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect    Use binary search to find the commit that introduced a bug
+   diff      Show changes between commits, commit and working tree, etc
+   grep      Print lines matching a pattern
+   log       Show commit logs
+   show      Show various types of objects
+   status    Show the working tree status
+
+grow, mark and tweak your common history
+   branch    List, create, or delete branches
+   commit    Record changes to the repository
+   merge     Join two or more development histories together
+   rebase    Reapply commits on top of another base tip
+   reset     Reset current HEAD to the specified state
+   switch    Switch branches
+   tag       Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch     Download objects and refs from another repository
+   pull      Fetch from and integrate with another repository or a local branch
+   push      Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+See 'git help git' for an overview of the system.
+(base) stomar-n@Sudhirs-MacBook-Pro-3 chef-repo % ls -la
+total 32
+drwxr-xr-x@  8 stomar-n  staff   256 Feb 12 20:02 .
+drwxr-xr-x  11 stomar-n  staff   352 Feb 12 20:01 ..
+-rw-r--r--@  1 stomar-n  staff  6148 Feb 12 20:02 .DS_Store
+drwxr-xr-x@  4 stomar-n  staff   128 Feb 13 04:01 .chef
+-rw-r--r--@  1 stomar-n  staff   495 Feb 13 04:01 .gitignore
+-rw-r--r--@  1 stomar-n  staff  2340 Feb 13 04:01 README.md
+drwxr-xr-x@  5 stomar-n  staff   160 Feb 12 20:02 cookbooks
+drwxr-xr-x@  3 stomar-n  staff    96 Feb 13 04:01 roles
+(base) stomar-n@Sudhirs-MacBook-Pro-3 chef-repo % git init
+Initialized empty Git repository in /Users/stomar-n/001_sudhir_2021/cognixia/devops/chef-repo/.git/
+(base) stomar-n@Sudhirs-MacBook-Pro-3 chef-repo % ls -la
+total 32
+drwxr-xr-x@  9 stomar-n  staff   288 Feb 13 18:56 .
+drwxr-xr-x  11 stomar-n  staff   352 Feb 12 20:01 ..
+-rw-r--r--@  1 stomar-n  staff  6148 Feb 12 20:02 .DS_Store
+drwxr-xr-x@  4 stomar-n  staff   128 Feb 13 04:01 .chef
+drwxr-xr-x   9 stomar-n  staff   288 Feb 13 18:56 .git
+-rw-r--r--@  1 stomar-n  staff   495 Feb 13 04:01 .gitignore
+-rw-r--r--@  1 stomar-n  staff  2340 Feb 13 04:01 README.md
+drwxr-xr-x@  5 stomar-n  staff   160 Feb 12 20:02 cookbooks
+drwxr-xr-x@  3 stomar-n  staff    96 Feb 13 04:01 roles
+(base) stomar-n@Sudhirs-MacBook-Pro-3 chef-repo % cd .chef 
+(base) stomar-n@Sudhirs-MacBook-Pro-3 .chef % ls -la
+total 16
+drwxr-xr-x@ 4 stomar-n  staff   128 Feb 13 04:01 .
+drwxr-xr-x@ 9 stomar-n  staff   288 Feb 13 18:56 ..
+-rw-r--r--@ 1 stomar-n  staff   412 Feb 13 04:01 config.rb
+-rw-r--r--@ 1 stomar-n  staff  1678 Feb 13 04:01 tomarskt.pem
+(base) stomar-n@Sudhirs-MacBook-Pro-3 .chef % l s-ltra
+zsh: command not found: l
+(base) stomar-n@Sudhirs-MacBook-Pro-3 .chef % ls -ltra
+total 16
+-rw-r--r--@ 1 stomar-n  staff  1678 Feb 13 04:01 tomarskt.pem
+-rw-r--r--@ 1 stomar-n  staff   412 Feb 13 04:01 config.rb
+drwxr-xr-x@ 4 stomar-n  staff   128 Feb 13 04:01 .
+drwxr-xr-x@ 9 stomar-n  staff   288 Feb 13 18:56 ..
+(base) stomar-n@Sudhirs-MacBook-Pro-3 .chef % knife bootstrap 172.31.109.136 --sudo -U vagrant -N webserver01
+Connecting to 172.31.109.136 using ssh
+WARNING: Failed to authenticate vagrant to 172.31.109.136 - trying password auth
+Enter password for vagrant@172.31.109.136: 
+Connecting to 172.31.109.136 using ssh
+^C%                                                                                                                        (base) stomar-n@Sudhirs-MacBook-Pro-3 .chef % knife bootstrap 127.0.0.1 --sudo -U mac webserver01
+Connecting to 127.0.0.1 using ssh
+WARNING: Failed to authenticate mac to 127.0.0.1 - trying password auth
+Enter password for mac@127.0.0.1: 
+Connecting to 127.0.0.1 using ssh
+WARN: [SSH] connection failed, terminating (#<Errno::ECONNREFUSED: Connection refused - connect(2) for 127.0.0.1:22>)
+ERROR: Train::Transports::SSHFailed: SSH session could not be established
+(base) stomar-n@Sudhirs-MacBook-Pro-3 .chef % 
+
+Last login: Fri Feb 12 21:15:01 on ttys005
+(eval):40: command not found: compdef
+(base) stomar-n@Sudhirs-MacBook-Pro-3 .chef % cd ..
+(base) stomar-n@Sudhirs-MacBook-Pro-3 chef-repo % cd..
+zsh: command not found: cd..
+(base) stomar-n@Sudhirs-MacBook-Pro-3 chef-repo % cd ..
+(base) stomar-n@Sudhirs-MacBook-Pro-3 devops % cd vm1
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % kls -la
+zsh: command not found: kls
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % ls -la
+total 8
+drwxr-xr-x   3 stomar-n  staff    96 Feb  6 21:22 .
+drwxr-xr-x  11 stomar-n  staff   352 Feb 12 20:01 ..
+-rw-r--r--   1 stomar-n  staff  3038 Jan 29 19:36 Vagrantfile
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % vagrant start
+Usage: vagrant [options] <command> [<args>]
+
+    -h, --help                       Print this help.
+
+Common commands:
+     autocomplete    manages autocomplete installation on host
+     box             manages boxes: installation, removal, etc.
+     cloud           manages everything related to Vagrant Cloud
+     destroy         stops and deletes all traces of the vagrant machine
+     global-status   outputs status Vagrant environments for this user
+     halt            stops the vagrant machine
+     help            shows the help for a subcommand
+     init            initializes a new Vagrant environment by creating a Vagrantfile
+     login           
+     package         packages a running vagrant environment into a box
+     plugin          manages plugins: install, uninstall, update, etc.
+     port            displays information about guest port mappings
+     powershell      connects to machine via powershell remoting
+     provision       provisions the vagrant machine
+     push            deploys code in this environment to a configured destination
+     rdp             connects to machine via RDP
+     reload          restarts vagrant machine, loads new Vagrantfile configuration
+     resume          resume a suspended vagrant machine
+     snapshot        manages snapshots: saving, restoring, etc.
+     ssh             connects to machine via SSH
+     ssh-config      outputs OpenSSH valid configuration to connect to the machine
+     status          outputs status of the vagrant machine
+     suspend         suspends the machine
+     up              starts and provisions the vagrant environment
+     upload          upload to machine via communicator
+     validate        validates the Vagrantfile
+     version         prints current and latest Vagrant version
+     winrm           executes commands on a machine via WinRM
+     winrm-config    outputs WinRM configuration to connect to the machine
+
+For help on any individual command run `vagrant COMMAND -h`
+
+Additional subcommands are available, but are either more advanced
+or not commonly used. To see all subcommands, run the command
+`vagrant list-commands`.
+        --[no-]color                 Enable or disable color output
+        --machine-readable           Enable machine readable output
+    -v, --version                    Display Vagrant version
+        --debug                      Enable debug output
+        --timestamp                  Enable timestamps on log output
+        --debug-timestamp            Enable debug output with timestamps
+        --no-tty                     Enable non-interactive output
+
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % vagrant init
+`Vagrantfile` already exists in this directory. Remove it before
+running `vagrant init`.
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % vagrant status
+Current machine states:
+
+default                   not created (virtualbox)
+
+The environment has not yet been created. Run `vagrant up` to
+create the environment. If a machine is not created, only the
+default provider will be shown. So if a provider is not listed,
+then the machine is not created for that environment.
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % vagrant create
+Usage: vagrant [options] <command> [<args>]
+
+    -h, --help                       Print this help.
+
+Common commands:
+     autocomplete    manages autocomplete installation on host
+     box             manages boxes: installation, removal, etc.
+     cloud           manages everything related to Vagrant Cloud
+     destroy         stops and deletes all traces of the vagrant machine
+     global-status   outputs status Vagrant environments for this user
+     halt            stops the vagrant machine
+     help            shows the help for a subcommand
+     init            initializes a new Vagrant environment by creating a Vagrantfile
+     login           
+     package         packages a running vagrant environment into a box
+     plugin          manages plugins: install, uninstall, update, etc.
+     port            displays information about guest port mappings
+     powershell      connects to machine via powershell remoting
+     provision       provisions the vagrant machine
+     push            deploys code in this environment to a configured destination
+     rdp             connects to machine via RDP
+     reload          restarts vagrant machine, loads new Vagrantfile configuration
+     resume          resume a suspended vagrant machine
+     snapshot        manages snapshots: saving, restoring, etc.
+     ssh             connects to machine via SSH
+     ssh-config      outputs OpenSSH valid configuration to connect to the machine
+     status          outputs status of the vagrant machine
+     suspend         suspends the machine
+     up              starts and provisions the vagrant environment
+     upload          upload to machine via communicator
+     validate        validates the Vagrantfile
+     version         prints current and latest Vagrant version
+     winrm           executes commands on a machine via WinRM
+     winrm-config    outputs WinRM configuration to connect to the machine
+
+For help on any individual command run `vagrant COMMAND -h`
+
+Additional subcommands are available, but are either more advanced
+or not commonly used. To see all subcommands, run the command
+`vagrant list-commands`.
+        --[no-]color                 Enable or disable color output
+        --machine-readable           Enable machine readable output
+    -v, --version                    Display Vagrant version
+        --debug                      Enable debug output
+        --timestamp                  Enable timestamps on log output
+        --debug-timestamp            Enable debug output with timestamps
+        --no-tty                     Enable non-interactive output
+
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % vagrant login
+WARNING: This command has been deprecated and aliased to `vagrant cloud auth login`
+In a moment we will ask for your username and password to HashiCorp's
+Vagrant Cloud. After authenticating, we will store an access token locally on
+disk. Your login details will be transmitted over a secure connection, and
+are never stored on disk locally.
+
+If you do not have an Vagrant Cloud account, sign up at
+https://www.vagrantcloud.com
+
+Vagrant Cloud username or email: ^CExiting due to interrupt.
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % vagrant reload
+==> default: VM not created. Moving on...
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % vagrant status
+Current machine states:
+
+default                   not created (virtualbox)
+
+The environment has not yet been created. Run `vagrant up` to
+create the environment. If a machine is not created, only the
+default provider will be shown. So if a provider is not listed,
+then the machine is not created for that environment.
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % vagrant up    
+Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Importing base box 'bento/centos-7.5'...
+==> default: Matching MAC address for NAT networking...
+==> default: Checking if box 'bento/centos-7.5' version '201808.24.0' is up to date...
+==> default: Setting the name of the VM: vm1_default_1613273306832_23110
+==> default: Clearing any previously set network interfaces...
+==> default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+    default: Adapter 2: hostonly
+==> default: Forwarding ports...
+    default: 22 (guest) => 2222 (host) (adapter 1)
+==> default: Running 'pre-boot' VM customizations...
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+    default: 
+    default: Vagrant insecure key detected. Vagrant will automatically replace
+    default: this with a newly generated keypair for better security.
+    default: 
+    default: Inserting generated public key within guest...
+    default: Removing insecure key from the guest if it's present...
+    default: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> default: Machine booted and ready!
+==> default: Checking for guest additions in VM...
+    default: The guest additions on this VM do not match the installed version of
+    default: VirtualBox! In most cases this is fine, but in rare cases it can
+    default: prevent things such as shared folders from working properly. If you see
+    default: shared folder errors, please make sure the guest additions within the
+    default: virtual machine match the version of VirtualBox you have installed on
+    default: your host and reload your VM.
+    default: 
+    default: Guest Additions Version: 5.2.18
+    default: VirtualBox Version: 6.1
+==> default: Configuring and enabling network interfaces...
+==> default: Mounting shared folders...
+    default: /vagrant => /Users/stomar-n/001_sudhir_2021/cognixia/devops/vm1
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % vagrant status
+Current machine states:
+
+default                   running (virtualbox)
+
+The VM is running. To stop this VM, you can run `vagrant halt` to
+shut it down forcefully, or you can run `vagrant suspend` to simply
+suspend the virtual machine. In either case, to restart it again,
+simply run `vagrant up`.
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % vagrant ssh   
+[vagrant@localhost ~]$ ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
+        inet6 fe80::1a92:ea16:8b20:8b69  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:8b:c9:3f  txqueuelen 1000  (Ethernet)
+        RX packets 939  bytes 115485 (112.7 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 665  bytes 122124 (119.2 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+eth1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.33.11  netmask 255.255.255.0  broadcast 192.168.33.255
+        inet6 fe80::a00:27ff:fe96:24df  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:96:24:df  txqueuelen 1000  (Ethernet)
+        RX packets 14  bytes 5680 (5.5 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 11  bytes 1510 (1.4 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 8  bytes 656 (656.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 8  bytes 656 (656.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[vagrant@localhost ~]$ passwd vagrant
+passwd: Only root can specify a user name.
+[vagrant@localhost ~]$ exit
+logout
+Connection to 127.0.0.1 closed.
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % passwd vagrant
+passwd: unknown user
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % vagrant login
+WARNING: This command has been deprecated and aliased to `vagrant cloud auth login`
+In a moment we will ask for your username and password to HashiCorp's
+Vagrant Cloud. After authenticating, we will store an access token locally on
+disk. Your login details will be transmitted over a secure connection, and
+are never stored on disk locally.
+
+If you do not have an Vagrant Cloud account, sign up at
+https://www.vagrantcloud.com
+
+Vagrant Cloud username or email: tomarskt
+Password (will be hidden): 
+Token description (Defaults to "Vagrant login from Sudhirs-MacBook-Pro-3.local"): 
+You are now logged in.
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % passwd vagrant
+passwd: unknown user
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % vagrant login
+WARNING: This command has been deprecated and aliased to `vagrant cloud auth login`
+You are already logged in.
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % ls -la
+total 8
+drwxr-xr-x   4 stomar-n  staff   128 Feb 13 19:26 .
+drwxr-xr-x  11 stomar-n  staff   352 Feb 12 20:01 ..
+drwxr-xr-x   4 stomar-n  staff   128 Feb 13 19:26 .vagrant
+-rw-r--r--   1 stomar-n  staff  3038 Jan 29 19:36 Vagrantfile
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % vagrant login
+WARNING: This command has been deprecated and aliased to `vagrant cloud auth login`
+You are already logged in.
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % chef-client
+[2021-02-13T19:59:20-08:00] WARN: *****************************************
+[2021-02-13T19:59:20-08:00] WARN: Did not find config file: /etc/chef/client.rb. Using command line options instead.
+[2021-02-13T19:59:20-08:00] WARN: *****************************************
+Starting Chef Infra Client, version 16.10.8
+Patents: https://www.chef.io/patents
+Creating a new client identity for localhost using the validator key.
+
+================================================================================
+Chef encountered an error attempting to create the client "localhost"
+================================================================================
+
+System Info:
+------------
+chef_version=16.10.8
+ruby=ruby 2.7.2p137 (2020-10-01 revision 5445e04352) [x86_64-darwin17]
+program_name=/opt/chef-workstation/bin/chef-client
+executable=/opt/chef-workstation/bin/chef-client
+
+
+Running handlers:
+[2021-02-13T19:59:28-08:00] ERROR: Running exception handlers
+Running handlers complete
+[2021-02-13T19:59:28-08:00] ERROR: Exception handlers complete
+Chef Infra Client failed. 0 resources updated in 08 seconds
+[2021-02-13T19:59:28-08:00] WARN: Failed to read the private key /etc/chef/client.pem: #<Errno::ENOENT: No such file or directory @ rb_sysopen - /etc/chef/client.pem>
+[2021-02-13T19:59:28-08:00] WARN: Error while reporting run start to Data Collector. URL: https://localhost:443/data-collector Exception: No HTTP Code -- I cannot read /etc/chef/client.pem, which you told me to use to sign requests! 
+[2021-02-13T19:59:28-08:00] WARN: Failed to read the private key /etc/chef/client.pem: #<Errno::ENOENT: No such file or directory @ rb_sysopen - /etc/chef/client.pem>
+[2021-02-13T19:59:28-08:00] WARN: Error while reporting run start to Data Collector. URL: https://localhost:443/data-collector Exception: No HTTP Code -- I cannot read /etc/chef/client.pem, which you told me to use to sign requests! 
+/opt/chef-workstation/embedded/lib/ruby/gems/2.7.0/gems/chef-16.10.8/lib/chef/compliance/runner.rb:23: warning: Chef::Compliance::Runner#logger at /opt/chef-workstation/embedded/lib/ruby/2.7.0/forwardable.rb:154 forwarding to private method NilClass#logger
+[2021-02-13T19:59:28-08:00] FATAL: NoMethodError: undefined method `logger' for nil:NilClass
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % vagrant login
+WARNING: This command has been deprecated and aliased to `vagrant cloud auth login`
+You are already logged in.
+(base) stomar-n@Sudhirs-MacBook-Pro-3 vm1 % vagrant ssh  
+Last failed login: Sun Feb 14 03:32:22 UTC 2021 from 192.168.33.1 on ssh:notty
+There were 10 failed login attempts since the last successful login.
+Last login: Sun Feb 14 03:29:47 2021 from 10.0.2.2
+[vagrant@localhost ~]$ chef-client
+[2021-02-14T04:02:52+00:00] FATAL: Errno::EACCES: Permission denied @ rb_sysopen - /Users/stomar-n/.chef/cache/chef-client-running.pid
+[vagrant@localhost ~]$ sudo chef-client
+Starting Chef Infra Client, version 16.10.8
+Patents: https://www.chef.io/patents
+resolving cookbooks for run list: ["apache"]
+Synchronizing Cookbooks:
+  - apache (0.1.0)
+Installing Cookbook Gems:
+Compiling Cookbooks...
+Converging 3 resources
+Recipe: apache::default
+  * yum_package[httpd] action install
+
+    - install version 0:2.4.6-97.el7.centos.x86_64 of package httpd
+  * service[httpd] action enable
+    - enable service service[httpd]
+  * service[httpd] action start
+    - start service service[httpd]
+  * cookbook_file[/var/www/html/index.html] action create
+    - create new file /var/www/html/index.html
+    - update content in file /var/www/html/index.html from none to eafd45
+    --- /var/www/html/index.html	2021-02-14 04:03:26.338471363 +0000
+    +++ /var/www/html/.chef-index20210214-12645-s2non0.html	2021-02-14 04:03:26.338471363 +0000
+    @@ -1 +1,7 @@
+    +<html>
+    +    <head>SIMPLE CHEF</head>
+    +    <body>
+    +        <h1> SIMPLE HEADING - CHEF WORLD I AM IN</h1>
+    +    </body>
+    +</html>
+    - change mode from '' to '0644'
+    - restore selinux security context
+
+Running handlers:
+Running handlers complete
+Chef Infra Client finished, 4/4 resources updated in 22 seconds
+[vagrant@localhost ~]$ 
+[vagrant@localhost ~]$ 
+
