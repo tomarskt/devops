@@ -1,0 +1,107 @@
+1 useradd vagrant 2 passwd vagrant 3 vi /etc/sudoers 4 clear 5 hostnamectl set-hostname http://chefworkstation.unixcloudfusion.in 6 clear 7 ifconfig 8 vi /etc/hosts 9 clear 10 wget https://packages.chef.io/files/stable/chefdk/4.13.3/el/7/chefdk-4.13.3-1.el7.x86_64.rpm 
+11 rpm -ivh chefdk-4.13.3-1.el7.x86_64.rpm 
+12 ls -ltr /home/vagrant 
+13 cp /home/vagrant/chef-starter\ \(1\).zip . 
+14 ls -ltr 
+15 clear 
+16 yum install unzip -y 
+17 clear 
+18 unzip chef-starter\ \(1\).zip 
+19 cd chef-repo/ 
+20 ls -ltra 
+21 clear 
+22 yum install git -y 
+23 git init 
+24 clear 
+25 ls -ltra 
+26 cd .chef/ 
+27 ls -ltr 
+28 cat config.rb 
+29 cd .. 
+30 clear 
+31 ls -ltr 
+32 cd cookbooks/ 
+33 ls -ltr 
+34 clear 
+35 chef generate cookbook apache 
+36 clear 
+37 ls -ltr 
+38 cd apache/ 
+39 ls -ltr 
+40 cd recipes/ 
+41 ls -ltr 
+42 clear 
+43 ls -ltr 
+44 vi default.rb 
+45 cat default.rb 
+46 cd .. 
+47 ls -ltr 
+48 mkdir file 
+49 mv file files 
+50 ls -ltr 
+51 cd files/ 
+52 ls -ltr 
+53 mkdir default 
+54 cd default/ 
+55 vi index.html 
+56 cd .. 
+57 ls -ltr 
+58 clear 
+59 ls -ltr 
+60 knife cookbook upload apache 
+61 clear 
+62 knife bootstrap 172.31.109.136 --sudo -U vagrant -N webserver01 
+63 clear 
+64 ohai 
+65 ohai | more 
+66 clear 
+67 knife search node "*:*" -a fqdn 
+68 clear 
+69 ls -ltr 
+70 cat apache/recipes/default.rb 
+71 cd apache/ 
+72 mkdir attributes 
+73 cd attributes/ 
+74 vi default.rb 
+75 cd .. 
+76 ls -ltr 
+77 cd files/ 
+78 ls -ltr 
+79 cd default/ 
+80 ls -ltr 
+81 clear 
+82 knife node run_list add webserver01 "recipe[apache]" 
+83 history 
+84 clear 
+85 pwd 
+86 cd ... 
+87 cd .. 
+88 ls -ltr 
+89 cat attributes/default.rb 
+90 cd files/default/ 
+91 cp index.html index1.html 
+92 vi index1.html 
+93 cd ../.. 
+94 vi recipes/default.rb 
+95 knife cookbook upload apache 
+96 cd ../ 
+97 cd .. 
+98 ls -ltr 
+99 clear 
+100 vi Berksfile 
+101 berks install 
+102 ls -ltr ~/.berkshelf/cookbooks/ 
+103 cp -r ~/.berkshelf/cookbooks/nginx-11.3.0 cookbooks/ 
+104 cd cookbooks/ 
+105 ls -ltr 
+106 cd nginx-11.3.0/ 
+107 ls -ltr 
+108 vi README.md 
+109 cd 
+110 clear 
+111 cd chef-repo/ 
+112 ls -ltr 
+113 git status 
+114 git add . 
+115 clear 
+116 history
